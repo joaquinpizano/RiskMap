@@ -1,0 +1,19 @@
+RiskMap | FEMA NFIP ZIP-to-County crosswalk audit
+FEMA records checked: 51,779
+HUD reference: ZIP-COUNTY_122025.xlsx (2025 Q4)
+
+Classification of claim records:
+  hud_pinellas_link: 50,952
+  hud_other_counties_only: 173
+  not_in_hud_crosswalk: 589
+  missing_zip: 65
+  malformed_zip: 0
+ZIP+4 values normalized to five digits: 3
+Distinct normalized ZIP categories: 137
+
+INTERPRETATION:
+- A HUD Pinellas link is evidence of a ZIP-county relationship in 2025, not proof of a claim property location.
+- A ZIP associated only with other counties in 2025 warrants review; it does not prove a historical claim is invalid.
+- A ZIP may span counties. HUD address ratios are NOT claim probabilities or flood risk rates.
+- This comparison does not establish historical ZIP boundaries or validate precise FEMA claim coordinates.
+- All original claim records are retained unchanged.

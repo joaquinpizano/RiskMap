@@ -1,0 +1,73 @@
+RiskMap | FEMA NFIP Pinellas County data quality check
+Source: NFIP_Claims_Pinellas.csv
+Source coverage: NFIP flood insurance claims only (not all property claims)
+Records: 51,779
+Columns: 84
+Outside Pinellas: 0
+Missing or duplicate IDs: 0
+Invalid loss years: 0
+Suspicious construction years (<1800 or future): 4,447
+Invalid payment values: 0
+Sum of available gross claim-payment fields (building + contents + ICC): $3,760,529,690.56
+NOTE: Gross payments are historical nominal dollars; missing values are not assumed to be zero.
+NOTE: Claim counts alone are NOT flood risk rates. Policy exposure denominators are needed.
+NOTE: FEMA latitude/longitude are generalized, not exact property locations.
+
+Missing values in selected fields:
+  amountPaidOnBuildingClaim: 6,771
+  amountPaidOnContentsClaim: 6,771
+  amountPaidOnIncreasedCostOfComplianceClaim: 6,771
+  censusGeoid: 319
+  originalConstructionDate: 93
+  reportedZipCode: 65
+
+Claims by year of loss:
+  1978: 52
+  1979: 974
+  1980: 101
+  1981: 118
+  1982: 1,910
+  1983: 173
+  1984: 26
+  1985: 6,064
+  1986: 125
+  1987: 105
+  1988: 1,009
+  1989: 17
+  1990: 17
+  1991: 66
+  1992: 92
+  1993: 3,133
+  1994: 25
+  1995: 362
+  1996: 3,551
+  1997: 240
+  1998: 180
+  1999: 275
+  2000: 289
+  2001: 172
+  2002: 99
+  2003: 115
+  2004: 632
+  2005: 72
+  2006: 187
+  2007: 35
+  2008: 25
+  2009: 29
+  2010: 41
+  2011: 102
+  2012: 628
+  2013: 57
+  2014: 22
+  2015: 146
+  2016: 266
+  2017: 276
+  2018: 41
+  2019: 57
+  2020: 1,100
+  2021: 37
+  2022: 66
+  2023: 2,237
+  2024: 26,366
+  2025: 51
+  2026: 16

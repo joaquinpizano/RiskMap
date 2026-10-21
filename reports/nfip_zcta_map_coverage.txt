@@ -1,0 +1,20 @@
+RiskMap | 2025 Census ZCTA map coverage audit
+Input ZIPs with HUD Pinellas link: 59
+ZIPs with a 2025 Census ZCTA polygon: 48
+ZCTA polygons intersecting Pinellas County: 48
+ZCTAs with no county intersection: none
+ZIPs with no matching ZCTA polygon: 11
+Unmatched ZIPs: 33731, 33733, 33736, 33738, 33741, 33742, 33757, 33758, 34660, 34682, 34697
+Mapped historical NFIP claim records: 50,807 of 50,952
+Mapped historical NFIP payments: $3,751,692,792.21 of $3,754,344,375.65
+Unmapped historical NFIP payments: $2,651,583.44
+
+CAUTIONS:
+- A reported ZIP with a 2025 HUD Pinellas relationship is not a verified historical claim location.
+- USPS ZIPs and Census ZCTAs are different geographic constructs.
+- ZCTA polygons are clipped to the 2025 Census Pinellas boundary for display.
+- Full ZIP claim totals are shown on intersecting polygons, not apportioned by area.
+- A 2025 geographic match does not establish the historical claim location.
+- Historical payments are nominal dollars and are NOT flood risk rates.
+- ZIP/ZCTA values without matching polygons remain in the input and are reported here.
+- No source data were altered.

@@ -1,0 +1,15 @@
+RiskMap | Historical NFIP payments by 2025 Q4 HUD ZIP-county status
+Claims reconciled: 51,779
+Gross reported payments: $3,760,529,690.56
+
+hud_pinellas_link: 50,952 claims | $3,754,344,375.65
+hud_other_counties_only: 173 claims | $1,128,898.85
+not_in_hud_crosswalk: 589 claims | $4,762,337.07
+missing_zip: 65 claims | $294,078.99
+malformed_zip: 0 claims | $0.00
+
+Payments outside Pinellas-linked ZIP group: $6,185,314.91
+NOTE: These are historical nominal NFIP claim payments, not flood-risk rates.
+NOTE: Missing payment fields are not treated as reported zero payments.
+NOTE: HUD 2025 Q4 ZIP-county association does not verify historical claim location.
+NOTE: No original FEMA claims were removed or modified.

@@ -1,0 +1,25 @@
+RiskMap | FEMA NFIP geographic consistency screening
+Source: NFIP_Claims_Pinellas.csv
+Total claim records: 51,779
+Distinct reported ZIP categories (including UNKNOWN): 140
+Records flagged for at least one review reason: 795
+
+Review flags (one claim may have multiple flags):
+  county_or_state_mismatch: 0
+  missing_zip: 65 | example IDs: 5462642, 5468684, 5481838, 5664941, 5672769
+  malformed_zip: 3 | example IDs: 6154366, 7506495, 7759774
+  unusual_zip_prefix_review: 409 | example IDs: 5449351, 5460274, 5461032, 5469357, 5477915
+  missing_census_geoid: 319 | example IDs: 5449021, 5458727, 5460114, 5465648, 5476459
+  malformed_census_geoid: 0
+  census_geoid_county_mismatch: 2 | example IDs: 6033603, 7009483
+
+IMPORTANT LIMITATIONS:
+- This script does not establish which ZIP codes lie in Pinellas County.
+- 337xx and 346xx are screening prefixes, not an authoritative ZIP list.
+- ZIPs may span county boundaries and change over time.
+- Census GEOID and county fields can disagree in source data.
+- FEMA coordinates are generalized; do not use as exact property locations.
+- Never delete claims based solely on these flags.
+- Before mapping, compare against an authoritative geographic crosswalk/boundary.
+
+ZIP-level review list: C:\Users\jpiza\RiskMap\data\processed\nfip_geography_review.csv
