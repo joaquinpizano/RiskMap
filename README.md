@@ -12,7 +12,11 @@ The project combines publicly available data from the Federal Emergency Manageme
 - Validate and match ZIP code data with county and Census geographic boundaries.
 - Examine historical claim patterns and payment trends.
 - Develop interactive visualizations to support insurance analytics and decision-making.
+## Geographic Visualization
 
+![Historical NFIP Payments by Census ZCTA](reports/nfip_pinellas_zcta_map.svg)
+
+*Historical NFIP payments across Pinellas County, visualized using Census ZCTA boundaries. These totals represent historical losses, not predicted flood risk.*
 ## Current Progress
 
 **Phase 1 — Data Collection & Validation (Completed)**
