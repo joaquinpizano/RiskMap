@@ -218,3 +218,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# RiskMap datasets
+data/raw/
+data/processed/
+
+# Local VS Code settings
+.vscode/
