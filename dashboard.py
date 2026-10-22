@@ -203,43 +203,62 @@ else:
     st.warning("Geographic map not found in the reports folder.")
 
 # --------------------------------------------------
-# ZIP Code Comparison
+
+# --------------------------------------------------
+# ZIP Code Comparison — Year-Filtered
 # --------------------------------------------------
 
 st.divider()
 st.header("ZIP Code Comparison")
 
 st.caption(
-    "Compare historical NFIP claim payments across ZIP codes "
-    "linked to Pinellas County."
+    "Compare historical NFIP payments and claims for "
+    "Pinellas-linked ZIP codes within the selected years."
 )
 
 ZIP_DATA_PATH = (
     Path(__file__).resolve().parent
-    / "data"
-    / "processed"
-    / "nfip_payments_by_zip_hud.csv"
+    / "data" / "processed" / "nfip_claims_by_year_zip.csv"
 )
 
+ZIP_STATUS_PATH = (
+    Path(__file__).resolve().parent
+    / "data" / "processed" / "nfip_payments_by_zip_hud.csv"
+)
 
-@st.cache_data
-def load_zip_data():
-    return pd.read_csv(
-        ZIP_DATA_PATH,
-        dtype={"reported_zip_5": str},
+if ZIP_DATA_PATH.exists() and ZIP_STATUS_PATH.exists():
+
+    @st.cache_data
+    def load_zip_comparison_data():
+        yearly = pd.read_csv(
+            ZIP_DATA_PATH,
+            dtype={"reported_zip_code": str}
+        )
+        status = pd.read_csv(
+            ZIP_STATUS_PATH,
+            dtype={"reported_zip_5": str}
+        )
+        return yearly, status
+
+    yearly_zip, zip_status = load_zip_comparison_data()
+
+    # Use the existing geographic audit to identify
+    # ZIP codes linked to Pinellas County.
+    pinellas_zips = set(
+        zip_status.loc[
+            zip_status["hud_status"] == "hud_pinellas_link",
+            "reported_zip_5"
+        ]
     )
 
-
-if ZIP_DATA_PATH.exists():
-    zip_df = load_zip_data()
-
-    # Only include ZIPs linked to Pinellas County
-    zip_df = zip_df[
-        zip_df["hud_status"] == "hud_pinellas_link"
+    # Apply the SAME year filter used by the main charts.
+    yearly_zip = yearly_zip[
+        yearly_zip["year_of_loss"].between(*selected_years)
+        & yearly_zip["reported_zip_code"].isin(pinellas_zips)
     ].copy()
 
     zip_options = sorted(
-        zip_df["reported_zip_5"].dropna().unique().tolist()
+        yearly_zip["reported_zip_code"].dropna().unique()
     )
 
     default_zips = [
@@ -251,18 +270,28 @@ if ZIP_DATA_PATH.exists():
         "Select ZIP Codes to Compare",
         options=zip_options,
         default=default_zips,
+        key="zip_comparison_selection"
     )
 
-    comparison = zip_df[
-        zip_df["reported_zip_5"].isin(selected_zips)
-    ].copy()
+    comparison = yearly_zip[
+        yearly_zip["reported_zip_code"].isin(selected_zips)
+    ].groupby("reported_zip_code", as_index=False).agg(
+        claim_records=("claim_records", "sum"),
+        positive_payment_claims=(
+            "records_with_positive_payments", "sum"
+        ),
+        gross_reported_payments_usd=(
+            "gross_reported_payments_usd", "sum"
+        )
+    )
 
     if not comparison.empty:
 
-        # Average payment per claim with a positive payment
         comparison["avg_positive_claim_payment"] = (
             comparison["gross_reported_payments_usd"]
-            / comparison["positive_payment_claims"].replace(0, float("nan"))
+            / comparison["positive_payment_claims"].replace(
+                0, float("nan")
+            )
         )
 
         col1, col2 = st.columns(2)
@@ -270,75 +299,68 @@ if ZIP_DATA_PATH.exists():
         with col1:
             payments_fig = px.bar(
                 comparison,
-                x="reported_zip_5",
+                x="reported_zip_code",
                 y="gross_reported_payments_usd",
-                title="Total Historical Payments by ZIP",
+                title="Historical Payments by ZIP",
                 labels={
-                    "reported_zip_5": "ZIP Code",
-                    "gross_reported_payments_usd": "Payments (USD)",
+                    "reported_zip_code": "ZIP Code",
+                    "gross_reported_payments_usd": "Payments (USD)"
                 },
-                color_discrete_sequence=["#008C71"],
+                color_discrete_sequence=["#008C71"]
             )
-
+            payments_fig.update_layout(
+                xaxis_type="category",
+                yaxis_tickprefix="$"
+            )
             st.plotly_chart(payments_fig, width="stretch")
 
         with col2:
             claims_fig = px.bar(
                 comparison,
-                x="reported_zip_5",
+                x="reported_zip_code",
                 y="claim_records",
-                title="Historical Claim Records by ZIP",
+                title="Claim Records by ZIP",
                 labels={
-                    "reported_zip_5": "ZIP Code",
-                    "claim_records": "Claim Records",
+                    "reported_zip_code": "ZIP Code",
+                    "claim_records": "Claim Records"
                 },
-                color_discrete_sequence=["#176B87"],
+                color_discrete_sequence=["#176B87"]
             )
-
+            claims_fig.update_layout(xaxis_type="category")
             st.plotly_chart(claims_fig, width="stretch")
 
         st.markdown("### Detailed ZIP Comparison")
 
-        display_df = comparison[
-            [
-                "reported_zip_5",
-                "claim_records",
-                "positive_payment_claims",
-                "gross_reported_payments_usd",
-                "avg_positive_claim_payment",
-            ]
-        ].rename(
-            columns={
-                "reported_zip_5": "ZIP Code",
-                "claim_records": "Claim Records",
-                "positive_payment_claims": "Claims With Positive Payments",
-                "gross_reported_payments_usd": "Total Payments ($)",
-                "avg_positive_claim_payment": "Avg. Payment per Positive-Payment Claim ($)",
-            }
-        )
+        display_df = comparison.rename(columns={
+            "reported_zip_code": "ZIP Code",
+            "claim_records": "Claim Records",
+            "positive_payment_claims": "Claims With Positive Payments",
+            "gross_reported_payments_usd": "Total Payments ($)",
+            "avg_positive_claim_payment":
+                "Avg. Payment per Positive-Payment Claim ($)"
+        })
 
         st.dataframe(
             display_df,
             hide_index=True,
             width="stretch",
             column_config={
-                "Total Payments ($)": st.column_config.NumberColumn(
-                    format="$%.2f"
-                ),
-                "Avg. Payment per Positive-Payment Claim ($)":
+                "Total Payments ($)":
                     st.column_config.NumberColumn(format="$%.2f"),
-            },
+                "Avg. Payment per Positive-Payment Claim ($)":
+                    st.column_config.NumberColumn(format="$%.2f")
+            }
         )
 
     else:
-        st.info("Select at least one ZIP code to view comparisons.")
+        st.info("Select at least one ZIP code to compare.")
 
     st.caption(
-        "ZIP-level totals cover all available years in the source summary. "
-        "They do not respond to the year filter above. "
-        "ZIP codes are linked to Pinellas using the 2025 HUD crosswalk; "
-        "the values are not exposure-adjusted flood-risk rates."
+        f"Comparison period: {selected_years[0]}–"
+        f"{selected_years[1]}. ZIP classification uses "
+        "the 2025 HUD crosswalk. Historical payment totals "
+        "are not flood-risk rates."
     )
 
 else:
-    st.warning("ZIP comparison dataset was not found.")
+    st.warning("ZIP comparison data files were not found.")
