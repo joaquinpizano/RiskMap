@@ -33,10 +33,15 @@ The project combines publicly available data from the Federal Emergency Manageme
 - Developed a geographic visualization of historical NFIP claim payments.
 - Documented geographic matching limitations and unmatched ZIP codes.
 
-**Phase 3 — Interactive Analytics Dashboard (In Progress)**
+**Phase 3 — Interactive Insurance Analytics Dashboard (In Progress)**
 
-Planned features include geographic exploration, historical loss trends, ZIP-level comparisons, and insurance market exposure analysis.
+- Developed an interactive Streamlit dashboard using Python, pandas, and Plotly.
+- Added historical NFIP payment and claim-volume visualizations.
+- Integrated a county-clipped Pinellas County geographic map.
+- Implemented year and geographic classification filters.
+- Built ZIP-level comparisons of historical payments, claim counts, and average positive-claim payments.
 
+**Next:** Improve dashboard design, synchronize filters, and expand geographic analysis.
 ## Technologies & Data Sources
 
 **Technologies:** Python, CSV, Excel, Census geographic data, Shapely, and SVG visualizations.
