@@ -69,6 +69,11 @@ def main():
             if not (year.isdigit() and 1900 <= int(year) <= 2026):
                 raise SystemExit(f'Invalid yearOfLoss: {year!r}')
             zip_code = (row['reportedZipCode'] or '').strip()
+
+            if len(zip_code) == 10 and zip_code[5] == '-':
+                if zip_code[:5].isdigit() and zip_code[6:].isdigit():
+                    zip_code = zip_code[:5]
+
             if not (len(zip_code) == 5 and zip_code.isdigit()):
                 zip_code = 'UNKNOWN'
             payment = Decimal('0')

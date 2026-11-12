@@ -1,0 +1,269 @@
+{
+  "status": "COMPATIBILITY AUDIT - rates not validated",
+  "scope": {
+    "calendar_year": 2024,
+    "zip": "33706",
+    "county_geoid_prefix": "12103"
+  },
+  "source_dates_align": true,
+  "claims_audit": {
+    "source_rows": 51779,
+    "source_reported_gross_total_usd": "3760529690.56",
+    "source_as_of_dates": {
+      "2026-09-08T00:00:00.000Z": 51779
+    },
+    "checks": {
+      "all_source_rows": 51779,
+      "target_zip_2024_records": 4060,
+      "matched_claim_records": 4056,
+      "missing_geoid": 4,
+      "normalized_zip_variant_records": 1
+    },
+    "geography_exclusions": [
+      {
+        "id": "5673842",
+        "reason": "missing_geoid",
+        "condominium_code": "L",
+        "sum_of_reported_gross_components_usd": "85000.00",
+        "missing_payment_components": 0
+      },
+      {
+        "id": "6290800",
+        "reason": "missing_geoid",
+        "condominium_code": "L",
+        "sum_of_reported_gross_components_usd": "85000.00",
+        "missing_payment_components": 0
+      },
+      {
+        "id": "6405621",
+        "reason": "missing_geoid",
+        "condominium_code": "L",
+        "sum_of_reported_gross_components_usd": "12462.60",
+        "missing_payment_components": 0
+      },
+      {
+        "id": "7300837",
+        "reason": "missing_geoid",
+        "condominium_code": "L",
+        "sum_of_reported_gross_components_usd": "85000.00",
+        "missing_payment_components": 0
+      }
+    ]
+  },
+  "comparison_by_code": [
+    {
+      "claim_records": 359,
+      "complete_payment_records": 356,
+      "partial_payment_records": 0,
+      "all_payment_components_missing": 3,
+      "positive_reported_payment_records": 332,
+      "zero_complete_payment_records": 24,
+      "negative_reported_payment_records": 0,
+      "sum_of_reported_gross_components_usd": "111715580.57",
+      "complete_record_gross_total_usd": "111715580.57",
+      "sum_policy_count": "7219",
+      "policy_count_invalid": 0,
+      "policy_count_above_one": 353,
+      "number_of_units_invalid": 0,
+      "number_of_units_above_one": 353,
+      "policy_count_vs_number_of_units_differences": 0,
+      "events": {
+        "Hurricane Helene": {
+          "claim_records": 348,
+          "sum_of_reported_gross_components_usd": "111643631.29"
+        },
+        "Hurricane Milton": {
+          "claim_records": 10,
+          "sum_of_reported_gross_components_usd": "71949.28"
+        },
+        "NOT REPORTED": {
+          "claim_records": 1,
+          "sum_of_reported_gross_components_usd": "0.00"
+        }
+      },
+      "as_of_dates": {
+        "2026-09-08T00:00:00.000Z": 359
+      },
+      "condominium_code": "A",
+      "provisional_record_years": "366.05737705",
+      "provisional_insured_unit_years": "7422.35792350",
+      "excluded_policy_date_exceptions": 1,
+      "claim_frequency_per_1000_policy_years": null,
+      "paid_loss_per_policy_year": null
+    },
+    {
+      "claim_records": 4,
+      "complete_payment_records": 4,
+      "partial_payment_records": 0,
+      "all_payment_components_missing": 0,
+      "positive_reported_payment_records": 4,
+      "zero_complete_payment_records": 0,
+      "negative_reported_payment_records": 0,
+      "sum_of_reported_gross_components_usd": "59183.16",
+      "complete_record_gross_total_usd": "59183.16",
+      "sum_policy_count": "24",
+      "policy_count_invalid": 0,
+      "policy_count_above_one": 4,
+      "number_of_units_invalid": 0,
+      "number_of_units_above_one": 4,
+      "policy_count_vs_number_of_units_differences": 0,
+      "events": {
+        "Hurricane Helene": {
+          "claim_records": 4,
+          "sum_of_reported_gross_components_usd": "59183.16"
+        }
+      },
+      "as_of_dates": {
+        "2026-09-08T00:00:00.000Z": 4
+      },
+      "condominium_code": "H",
+      "provisional_record_years": "4.00000000",
+      "provisional_insured_unit_years": "24.00000000",
+      "excluded_policy_date_exceptions": 0,
+      "claim_frequency_per_1000_policy_years": null,
+      "paid_loss_per_policy_year": null
+    },
+    {
+      "claim_records": 3,
+      "complete_payment_records": 3,
+      "partial_payment_records": 0,
+      "all_payment_components_missing": 0,
+      "positive_reported_payment_records": 2,
+      "zero_complete_payment_records": 1,
+      "negative_reported_payment_records": 0,
+      "sum_of_reported_gross_components_usd": "18976.38",
+      "complete_record_gross_total_usd": "18976.38",
+      "sum_policy_count": "12",
+      "policy_count_invalid": 0,
+      "policy_count_above_one": 3,
+      "number_of_units_invalid": 0,
+      "number_of_units_above_one": 3,
+      "policy_count_vs_number_of_units_differences": 0,
+      "events": {
+        "Hurricane Helene": {
+          "claim_records": 3,
+          "sum_of_reported_gross_components_usd": "18976.38"
+        }
+      },
+      "as_of_dates": {
+        "2026-09-08T00:00:00.000Z": 3
+      },
+      "condominium_code": "L",
+      "provisional_record_years": "3.00000000",
+      "provisional_insured_unit_years": "12.00000000",
+      "excluded_policy_date_exceptions": 0,
+      "claim_frequency_per_1000_policy_years": null,
+      "paid_loss_per_policy_year": null
+    },
+    {
+      "claim_records": 3394,
+      "complete_payment_records": 3314,
+      "partial_payment_records": 0,
+      "all_payment_components_missing": 80,
+      "positive_reported_payment_records": 3082,
+      "zero_complete_payment_records": 231,
+      "negative_reported_payment_records": 1,
+      "sum_of_reported_gross_components_usd": "488233485.63",
+      "complete_record_gross_total_usd": "488233485.63",
+      "sum_policy_count": "3394",
+      "policy_count_invalid": 0,
+      "policy_count_above_one": 0,
+      "number_of_units_invalid": 0,
+      "number_of_units_above_one": 370,
+      "policy_count_vs_number_of_units_differences": 370,
+      "events": {
+        "Hurricane Helene": {
+          "claim_records": 3228,
+          "sum_of_reported_gross_components_usd": "486668360.82"
+        },
+        "NOT REPORTED": {
+          "claim_records": 16,
+          "sum_of_reported_gross_components_usd": "329197.46"
+        },
+        "Hurricane Milton": {
+          "claim_records": 147,
+          "sum_of_reported_gross_components_usd": "1229666.46"
+        },
+        "Hurricane Debby": {
+          "claim_records": 3,
+          "sum_of_reported_gross_components_usd": "6260.89"
+        }
+      },
+      "as_of_dates": {
+        "2026-09-08T00:00:00.000Z": 3394
+      },
+      "condominium_code": "N",
+      "provisional_record_years": "3817.79781421",
+      "provisional_insured_unit_years": "3817.79781421",
+      "excluded_policy_date_exceptions": 15,
+      "claim_frequency_per_1000_policy_years": null,
+      "paid_loss_per_policy_year": null
+    },
+    {
+      "claim_records": 296,
+      "complete_payment_records": 266,
+      "partial_payment_records": 0,
+      "all_payment_components_missing": 30,
+      "positive_reported_payment_records": 188,
+      "zero_complete_payment_records": 78,
+      "negative_reported_payment_records": 0,
+      "sum_of_reported_gross_components_usd": "3607528.44",
+      "complete_record_gross_total_usd": "3607528.44",
+      "sum_policy_count": "296",
+      "policy_count_invalid": 0,
+      "policy_count_above_one": 0,
+      "number_of_units_invalid": 0,
+      "number_of_units_above_one": 225,
+      "policy_count_vs_number_of_units_differences": 225,
+      "events": {
+        "Hurricane Helene": {
+          "claim_records": 283,
+          "sum_of_reported_gross_components_usd": "3589612.97"
+        },
+        "NOT REPORTED": {
+          "claim_records": 4,
+          "sum_of_reported_gross_components_usd": "0.00"
+        },
+        "Hurricane Milton": {
+          "claim_records": 8,
+          "sum_of_reported_gross_components_usd": "17915.47"
+        },
+        "Hurricane Debby": {
+          "claim_records": 1,
+          "sum_of_reported_gross_components_usd": "0.00"
+        }
+      },
+      "as_of_dates": {
+        "2026-09-08T00:00:00.000Z": 296
+      },
+      "condominium_code": "U",
+      "provisional_record_years": "542.78415301",
+      "provisional_insured_unit_years": "542.78415301",
+      "excluded_policy_date_exceptions": 3,
+      "claim_frequency_per_1000_policy_years": null,
+      "paid_loss_per_policy_year": null
+    }
+  ],
+  "exposure_record_reconciliation": {
+    "overlapping_records": 9558,
+    "no_elapsed_coverage": 258,
+    "date_exceptions": 19
+  },
+  "limitations": [
+    "The comparison joins aggregates by calendar year, ZIP and condominium code; it is not a record-level policy/claim link.",
+    "Claims IDs and policy IDs identify source rows, not shared contract or property keys.",
+    "Record duration is not yet validated as unique contract exposure; transaction interpretation is unresolved.",
+    "Do not weight claim counts or dollar payments by policyCount or numberOfUnits.",
+    "Same asOfDate does not certify identical processing histories or final settlement.",
+    "Missing payment components are unknown, not reported zero.",
+    "Gross payment sums preserve signed reported components; recovery and net-payment fields are not combined.",
+    "Missing claim GEOIDs and missing policy GEOIDs cannot be assigned to matched exposure.",
+    "Master and individual-unit coverage may overlap; groups are kept separate.",
+    "Rates are left null until counting and exposure semantics are validated."
+  ],
+  "input_sha256": {
+    "claims": "305d6f6b03df09872f133949e3eecbc2cddf53b527a46c6535883b3c637747be",
+    "exposure": "33501dbf5e15597cf29cacfbc58234494bb5c184d8438642a7de4b3655592bc1"
+  },
+  "generated_at_utc": "2026-10-23T16:14:37.188324+00:00"
+}

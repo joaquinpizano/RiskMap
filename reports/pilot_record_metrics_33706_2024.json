@@ -1,0 +1,140 @@
+{
+  "status": "EXPLORATORY RECORD-BASED PILOT - not validated contract/property risk",
+  "scope": {
+    "calendar_year": 2024,
+    "zip": "33706",
+    "county_geoid_prefix": "12103"
+  },
+  "source_as_of_dates": [
+    "2026-09-08T00:00:00.000Z"
+  ],
+  "metrics_by_condominium_code": [
+    {
+      "code": "A",
+      "description": "Condominium association",
+      "claim_records": 359,
+      "records_with_positive_reported_payments": 332,
+      "records_with_all_gross_payment_fields_missing": 3,
+      "records_with_partial_gross_payments": 0,
+      "record_years_excluding_flagged_dates": "366.05737705",
+      "claim_records_per_1000_record_years": "980.72057144",
+      "positive_reported_payment_records_per_1000_record_years": "906.96164267",
+      "sum_of_reported_gross_components_usd": "111715580.57",
+      "reported_gross_components_usd_per_record_year": "305185.98332944",
+      "excluded_policy_date_exceptions": 1,
+      "sensitivity_if_flagged_cancellations_ignored": {
+        "record_years": "366.46174863",
+        "claim_records_per_1000_record_years": "979.63839703",
+        "reported_gross_components_usd_per_record_year": "304849.22638623"
+      },
+      "small_denominator_note": null
+    },
+    {
+      "code": "H",
+      "description": "High-rise master policy",
+      "claim_records": 4,
+      "records_with_positive_reported_payments": 4,
+      "records_with_all_gross_payment_fields_missing": 0,
+      "records_with_partial_gross_payments": 0,
+      "record_years_excluding_flagged_dates": "4.00000000",
+      "claim_records_per_1000_record_years": "1000.00000000",
+      "positive_reported_payment_records_per_1000_record_years": "1000.00000000",
+      "sum_of_reported_gross_components_usd": "59183.16",
+      "reported_gross_components_usd_per_record_year": "14795.79000000",
+      "excluded_policy_date_exceptions": 0,
+      "sensitivity_if_flagged_cancellations_ignored": {
+        "record_years": "4.00000000",
+        "claim_records_per_1000_record_years": "1000.00000000",
+        "reported_gross_components_usd_per_record_year": "14795.79000000"
+      },
+      "small_denominator_note": "Interpret cautiously: fewer than 10 record-years."
+    },
+    {
+      "code": "L",
+      "description": "Low-rise master policy",
+      "claim_records": 3,
+      "records_with_positive_reported_payments": 2,
+      "records_with_all_gross_payment_fields_missing": 0,
+      "records_with_partial_gross_payments": 0,
+      "record_years_excluding_flagged_dates": "3.00000000",
+      "claim_records_per_1000_record_years": "1000.00000000",
+      "positive_reported_payment_records_per_1000_record_years": "666.66666667",
+      "sum_of_reported_gross_components_usd": "18976.38",
+      "reported_gross_components_usd_per_record_year": "6325.46000000",
+      "excluded_policy_date_exceptions": 0,
+      "sensitivity_if_flagged_cancellations_ignored": {
+        "record_years": "3.00000000",
+        "claim_records_per_1000_record_years": "1000.00000000",
+        "reported_gross_components_usd_per_record_year": "6325.46000000"
+      },
+      "small_denominator_note": "Interpret cautiously: fewer than 10 record-years."
+    },
+    {
+      "code": "N",
+      "description": "Not a condominium",
+      "claim_records": 3394,
+      "records_with_positive_reported_payments": 3082,
+      "records_with_all_gross_payment_fields_missing": 80,
+      "records_with_partial_gross_payments": 0,
+      "record_years_excluding_flagged_dates": "3817.79781421",
+      "claim_records_per_1000_record_years": "888.99417024",
+      "positive_reported_payment_records_per_1000_record_years": "807.27166549",
+      "sum_of_reported_gross_components_usd": "488233485.63",
+      "reported_gross_components_usd_per_record_year": "127883.53637083",
+      "excluded_policy_date_exceptions": 15,
+      "sensitivity_if_flagged_cancellations_ignored": {
+        "record_years": "3822.77322405",
+        "claim_records_per_1000_record_years": "887.83712794",
+        "reported_gross_components_usd_per_record_year": "127717.09359017"
+      },
+      "small_denominator_note": null
+    },
+    {
+      "code": "U",
+      "description": "Individual condominium unit",
+      "claim_records": 296,
+      "records_with_positive_reported_payments": 188,
+      "records_with_all_gross_payment_fields_missing": 30,
+      "records_with_partial_gross_payments": 0,
+      "record_years_excluding_flagged_dates": "542.78415301",
+      "claim_records_per_1000_record_years": "545.33648110",
+      "positive_reported_payment_records_per_1000_record_years": "346.36235962",
+      "sum_of_reported_gross_components_usd": "3607528.44",
+      "reported_gross_components_usd_per_record_year": "6646.34075994",
+      "excluded_policy_date_exceptions": 3,
+      "sensitivity_if_flagged_cancellations_ignored": {
+        "record_years": "543.54371585",
+        "claim_records_per_1000_record_years": "544.57441300",
+        "reported_gross_components_usd_per_record_year": "6637.05298176"
+      },
+      "small_denominator_note": null
+    }
+  ],
+  "method": "Claim rows / clipped recorded policy-duration years; condominium codes kept separate.",
+  "documentation": {
+    "source_url": "https://agents.floodsmart.gov/flood-maps-and-data/faqs-about-nfip-data",
+    "checked_on": "2026-10-23",
+    "findings": [
+      "FEMA describes separate renewal records and effective/termination date selection for in-force coverage.",
+      "FEMA does not supply a shared public identifier for linking individual claims and policy records."
+    ],
+    "inference": "Integrating recorded coverage intervals supports exploratory aggregate record-year ratios. The FAQ does not certify this v3 pilot as unique-contract exposure or resolve all endorsement behavior."
+  },
+  "limitations": [
+    "Not the percentage or probability of properties flooded; multiple loss events can generate claims in one year.",
+    "Do not call record-years unique contracts, properties, households or people.",
+    "Do not combine code groups into unique-property exposure.",
+    "Four missing-GEOID claims are excluded; missing policy GEOIDs are outside the downloaded cohort.",
+    "Nineteen policy cancellation-before-effective exceptions remain unresolved.",
+    "Sensitivity ignores flagged cancellation dates only; it is not a correction or confidence interval.",
+    "Payment sums omit unknown components and are not final losses or dollars disbursed during 2024.",
+    "2024-loss payments are reported through the source as-of date, not limited to payment transactions in 2024.",
+    "Small master-policy groups are unstable and should not be ranked against larger groups.",
+    "Not suitable for predicted flood risk, pricing or countywide conclusions."
+  ],
+  "input_sha256": {
+    "comparison": "3e6d3c18252cfc08f48888b09e47cdd8c8c4cbf50e2b60432825925fac82066d",
+    "exposure": "33501dbf5e15597cf29cacfbc58234494bb5c184d8438642a7de4b3655592bc1"
+  },
+  "generated_at_utc": "2026-10-23T16:21:03.598878+00:00"
+}

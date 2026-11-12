@@ -1,0 +1,9 @@
+{
+  "params": {
+    "$filter": "propertyState eq 'FL' and startswith(censusGeoid,'12103') and policyEffectiveDate ge '2023-01-01' and policyEffectiveDate lt '2024-01-01' and reportedZipCode eq '33703' and id gt 213417262",
+    "$select": "id,propertyState,reportedZipCode,censusGeoid,policyEffectiveDate,policyTerminationDate,cancellationDateOfFloodPolicy,policyCount,condominiumCoverageTypeCode,asOfDate,endorsementEffectiveDate,policyTermIndicator",
+    "$orderby": "id",
+    "$top": 10000
+  },
+  "records": []
+}

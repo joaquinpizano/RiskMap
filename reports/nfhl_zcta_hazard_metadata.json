@@ -1,0 +1,83 @@
+{
+  "status": "descriptive mapped-hazard context; not observed flooding or insurance loss",
+  "retrieved_at_utc": "2026-11-12T00:13:28.258169+00:00",
+  "sources": {
+    "fema_nfhl_service": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer",
+    "fema_flood_hazard_zones_layer": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28",
+    "fema_study_info_table": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/41",
+    "census_zcta_archive": "https://www2.census.gov/geo/tiger/TIGER2025/ZCTA520/tl_2025_us_zcta520.zip",
+    "census_archive_local_path": "data\\raw\\tl_2025_us_zcta520.zip"
+  },
+  "source_metadata": {
+    "nfhl_layer_name": "Flood Hazard Zones",
+    "nfhl_layer_source_crs_epsg": 4269,
+    "nfhl_zcta_feature_counts": {
+      "33703": 76,
+      "33708": 49,
+      "33706": 47
+    },
+    "study_map_versions": [
+      {
+        "dfirm_id": "12103C",
+        "version_id": "1.1.1.0",
+        "study_name": null,
+        "state": null,
+        "county": null,
+        "effective_date": null,
+        "database_revision_date": null,
+        "effective_date_status": "missing from Study_Info"
+      },
+      {
+        "dfirm_id": "12103C",
+        "version_id": "2.4.3.2",
+        "study_name": "PINELLAS COUNTY",
+        "state": "Florida",
+        "county": "PINELLAS COUNTY",
+        "effective_date": "2021-08-24",
+        "database_revision_date": "2026-11-05",
+        "effective_date_status": "available"
+      }
+    ],
+    "study_effective_date_gaps": [
+      "12103C:1.1.1.0"
+    ],
+    "geographic_coverage": [
+      "33703",
+      "33706",
+      "33708"
+    ]
+  },
+  "geographic_method": {
+    "claims_geography": "reported postal ZIP in FEMA claims records",
+    "hazard_geography": "2020 Census ZCTAs from the 2025 TIGER/Line ZCTA archive; not USPS ZIP boundaries",
+    "aggregation": "intersect NFHL zone polygons with each complete target ZCTA in EPSG:4269, then union areas by SFHA_TF class",
+    "area_measurement": "GRS80 ellipsoidal geodesic area from EPSG:4269 coordinates",
+    "coordinate_transform_check": "ZCTA representative points round-trip through EPSG:4269 to EPSG:26917 and back",
+    "geodesic_area_tolerance": "1e-7 of the full ZCTA area; mapped/SFHA values are capped at the ZCTA/mapped union only within this tolerance and adjustments are reported",
+    "sfha_definition": "NFHL SFHA_TF = T polygon area; denominator is the full Census ZCTA polygon area",
+    "overlap_handling": "overlap between SFHA_TF T and F is reported and assigned to SFHA in the exclusive area partition",
+    "unrepresented_area": "ZCTA area not covered by a returned Flood Hazard Zones polygon; may include water or data gaps and is not labeled flood-free"
+  },
+  "field_definitions": {
+    "zcta_area_km2": "full selected Census ZCTA polygon geodesic area on the GRS80 ellipsoid",
+    "nfhl_mapped_area_km2": "union area of all intersecting NFHL zone polygons clipped to the ZCTA",
+    "nfhl_mapped_area_adjustment_m2": "geodesic edge-segmentation excess capped from mapped area when within the stated tolerance",
+    "nfhl_mapped_pct_zcta": "NFHL mapped area divided by full ZCTA area, percent",
+    "sfha_area_km2": "union area with SFHA_TF = T, clipped to ZCTA",
+    "sfha_area_adjustment_m2": "geodesic edge-segmentation excess capped from SFHA area when within the stated tolerance",
+    "sfha_pct_zcta": "SFHA area divided by full ZCTA area, percent",
+    "sfha_pct_nfhl_mapped": "SFHA area divided by NFHL mapped area, percent",
+    "non_sfha_area_km2": "SFHA_TF = F area after subtracting any overlap with SFHA polygons",
+    "unclassified_nfhl_area_km2": "mapped area without SFHA_TF equal to T or F",
+    "not_represented_by_nfhl_zones_km2": "full ZCTA area less mapped zone union; not proof of no flood hazard",
+    "sfha_non_sfha_overlap_km2": "area of overlap between unions of SFHA_TF T and F polygons",
+    "nfhl_polygon_count": "number of returned NFHL features with positive-area intersection with the ZCTA",
+    "nfhl_study_effective_dates": "semicolon-separated effective dates from linked Study_Info map versions",
+    "nfhl_dfirm_versions": "semicolon-separated DFIRM_ID:VERSION_ID values intersecting the ZCTA"
+  },
+  "input_snapshot_sha256": {
+    "nfhl_zones_33703.geojson": "654518cc6dac1d1998c0f92c5ef2bb1e3bd0618e52fc0546dd289fb85ace89cc",
+    "nfhl_zones_33708.geojson": "5739ad6106795c15be8aac757fd95992ff328b88e595af6d1efc83eba8b7fffe",
+    "nfhl_zones_33706.geojson": "4da0ba4c5cd87d9e809ac9328790631a02b7c0b8e409afd90f276d461873c4b6"
+  }
+}

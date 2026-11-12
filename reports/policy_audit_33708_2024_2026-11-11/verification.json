@@ -1,0 +1,12 @@
+{
+  "all_checks_passed": true,
+  "snapshot": "2026-09-08T00:00:00.000Z",
+  "downloaded_and_pinellas_ids": 3790,
+  "zip_only_ids": 4304,
+  "excluded_ids_all_null_geoid": 514,
+  "included_policy_count_sum": 10047,
+  "excluded_policy_count_sum": 514,
+  "missing_or_invalid_policy_counts": 0,
+  "protected_files_unchanged": 414,
+  "tests_passed": 18
+}

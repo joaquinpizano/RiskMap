@@ -1,0 +1,5 @@
+hud_status,claim_records,positive_payment_claims,records_with_no_payment_values,gross_reported_payments_usd
+hud_other_counties_only,173,116,55,1128898.85
+hud_pinellas_link,50952,41904,6520,3754344375.65
+missing_zip,65,40,25,294078.99
+not_in_hud_crosswalk,589,416,171,4762337.07

@@ -1,0 +1,33 @@
+[
+  {
+    "effective_year": 2023,
+    "initial_server_count": 4920,
+    "final_server_count": 4920,
+    "unique_records": 4920,
+    "download_complete": true,
+    "as_of_dates": [
+      "2026-09-08T00:00:00.000Z"
+    ],
+    "quality": {
+      "records": 4920,
+      "sum_policy_count": 12069,
+      "records_policy_count_above_one": 373,
+      "missing_or_invalid_effective_dates": 0,
+      "missing_or_invalid_termination_dates": 0,
+      "invalid_term_intervals": 0,
+      "records_with_cancellation": 263,
+      "invalid_cancellation_dates": 0,
+      "cancellation_before_effective": 9
+    },
+    "retrieved_at": "2026-10-23T15:45:08.500049+00:00",
+    "scope": "FL records with Census GEOID prefix 12103; missing GEOIDs excluded by query",
+    "exposure_ready": false,
+    "limitations": [
+      "Count agreement does not guarantee an immutable source snapshot.",
+      "County coverage requires an independent check for missing/misassigned GEOIDs.",
+      "Policy count measures insured units, including condominium units.",
+      "Transaction semantics and claims unit compatibility require review.",
+      "Effective-year partitions are not calendar-year exposure totals."
+    ]
+  }
+]

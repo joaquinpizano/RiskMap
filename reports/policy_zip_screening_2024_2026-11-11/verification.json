@@ -1,0 +1,32 @@
+{
+  "universe_zips": 59,
+  "new_zips_attempted": 57,
+  "reused_full_audits": 2,
+  "count_pairs_available": 57,
+  "unknown_gaps": [
+    "34677",
+    "34689"
+  ],
+  "empty_zip_only_cohorts": [
+    "33731",
+    "33736",
+    "33738",
+    "33741",
+    "33744",
+    "33757",
+    "33758",
+    "34682",
+    "34697"
+  ],
+  "new_gaps_unclassified": true,
+  "saved_count_responses_checked": 340,
+  "no_new_full_downloads": true,
+  "recommendations": [
+    "33708",
+    "33716",
+    "33702"
+  ],
+  "protected_files_unchanged": 69,
+  "all_checks_passed": true,
+  "tests_passed": 15
+}

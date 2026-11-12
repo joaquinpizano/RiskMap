@@ -1,0 +1,316 @@
+{
+  "status": "PROVISIONAL - not approved for claims rates",
+  "calendar_year": 2024,
+  "days_in_year": 366,
+  "zip": "33706",
+  "county_geoid_prefix": "12103",
+  "source_as_of_dates": [
+    "2026-09-08T00:00:00.000Z"
+  ],
+  "unique_records": 9835,
+  "record_reconciliation": {
+    "overlapping_records": 9558,
+    "no_elapsed_coverage": 258,
+    "date_exceptions": 19
+  },
+  "groups": [
+    {
+      "code": "A",
+      "description": "Condominium association",
+      "overlapping_records": 729,
+      "record_years_excluding_exceptions": "366.05737705",
+      "insured_unit_years_excluding_exceptions": "7422.35792350",
+      "exception_records": 1,
+      "added_record_years_if_flagged_cancellation_ignored": "0.40437158",
+      "added_insured_unit_years_if_flagged_cancellation_ignored": "6.87431694"
+    },
+    {
+      "code": "H",
+      "description": "RCBAP high-rise master policy",
+      "overlapping_records": 8,
+      "record_years_excluding_exceptions": "4.00000000",
+      "insured_unit_years_excluding_exceptions": "24.00000000",
+      "exception_records": 0,
+      "added_record_years_if_flagged_cancellation_ignored": "0.00000000",
+      "added_insured_unit_years_if_flagged_cancellation_ignored": "0.00000000"
+    },
+    {
+      "code": "L",
+      "description": "RCBAP low-rise master policy",
+      "overlapping_records": 6,
+      "record_years_excluding_exceptions": "3.00000000",
+      "insured_unit_years_excluding_exceptions": "12.00000000",
+      "exception_records": 0,
+      "added_record_years_if_flagged_cancellation_ignored": "0.00000000",
+      "added_insured_unit_years_if_flagged_cancellation_ignored": "0.00000000"
+    },
+    {
+      "code": "N",
+      "description": "Not a condominium",
+      "overlapping_records": 7710,
+      "record_years_excluding_exceptions": "3817.79781421",
+      "insured_unit_years_excluding_exceptions": "3817.79781421",
+      "exception_records": 15,
+      "added_record_years_if_flagged_cancellation_ignored": "4.97540984",
+      "added_insured_unit_years_if_flagged_cancellation_ignored": "4.97540984"
+    },
+    {
+      "code": "U",
+      "description": "Individual condominium unit",
+      "overlapping_records": 1105,
+      "record_years_excluding_exceptions": "542.78415301",
+      "insured_unit_years_excluding_exceptions": "542.78415301",
+      "exception_records": 3,
+      "added_record_years_if_flagged_cancellation_ignored": "0.75956284",
+      "added_insured_unit_years_if_flagged_cancellation_ignored": "0.75956284"
+    }
+  ],
+  "date_exceptions": [
+    {
+      "id": 210961998,
+      "policyEffectiveDate": "2023-04-13T00:00:00.000Z",
+      "policyTerminationDate": "2024-04-13T00:00:00.000Z",
+      "cancellationDateOfFloodPolicy": "2022-04-13T00:00:00.000Z",
+      "policyCount": 1,
+      "condominiumCoverageTypeCode": "N",
+      "endorsementEffectiveDate": null
+    },
+    {
+      "id": 211206132,
+      "policyEffectiveDate": "2023-05-06T00:00:00.000Z",
+      "policyTerminationDate": "2024-05-06T00:00:00.000Z",
+      "cancellationDateOfFloodPolicy": "2023-01-20T00:00:00.000Z",
+      "policyCount": 1,
+      "condominiumCoverageTypeCode": "N",
+      "endorsementEffectiveDate": null
+    },
+    {
+      "id": 211224206,
+      "policyEffectiveDate": "2023-01-18T00:00:00.000Z",
+      "policyTerminationDate": "2024-01-18T00:00:00.000Z",
+      "cancellationDateOfFloodPolicy": "2022-01-18T00:00:00.000Z",
+      "policyCount": 1,
+      "condominiumCoverageTypeCode": "N",
+      "endorsementEffectiveDate": "2023-09-29T00:00:00.000Z"
+    },
+    {
+      "id": 211324018,
+      "policyEffectiveDate": "2023-03-29T00:00:00.000Z",
+      "policyTerminationDate": "2024-03-29T00:00:00.000Z",
+      "cancellationDateOfFloodPolicy": "2022-03-29T00:00:00.000Z",
+      "policyCount": 1,
+      "condominiumCoverageTypeCode": "N",
+      "endorsementEffectiveDate": null
+    },
+    {
+      "id": 212554464,
+      "policyEffectiveDate": "2023-07-04T00:00:00.000Z",
+      "policyTerminationDate": "2024-07-04T00:00:00.000Z",
+      "cancellationDateOfFloodPolicy": "2021-07-04T00:00:00.000Z",
+      "policyCount": 1,
+      "condominiumCoverageTypeCode": "N",
+      "endorsementEffectiveDate": "2023-07-04T00:00:00.000Z"
+    },
+    {
+      "id": 212748923,
+      "policyEffectiveDate": "2023-03-30T00:00:00.000Z",
+      "policyTerminationDate": "2024-03-30T00:00:00.000Z",
+      "cancellationDateOfFloodPolicy": "2022-03-30T00:00:00.000Z",
+      "policyCount": 1,
+      "condominiumCoverageTypeCode": "N",
+      "endorsementEffectiveDate": "2023-06-22T00:00:00.000Z"
+    },
+    {
+      "id": 212859868,
+      "policyEffectiveDate": "2023-07-15T00:00:00.000Z",
+      "policyTerminationDate": "2024-07-15T00:00:00.000Z",
+      "cancellationDateOfFloodPolicy": "2022-07-15T00:00:00.000Z",
+      "policyCount": 1,
+      "condominiumCoverageTypeCode": "N",
+      "endorsementEffectiveDate": null
+    },
+    {
+      "id": 213101065,
+      "policyEffectiveDate": "2023-05-28T00:00:00.000Z",
+      "policyTerminationDate": "2024-05-28T00:00:00.000Z",
+      "cancellationDateOfFloodPolicy": "2022-05-28T00:00:00.000Z",
+      "policyCount": 17,
+      "condominiumCoverageTypeCode": "A",
+      "endorsementEffectiveDate": null
+    },
+    {
+      "id": 213129775,
+      "policyEffectiveDate": "2023-07-11T00:00:00.000Z",
+      "policyTerminationDate": "2024-07-11T00:00:00.000Z",
+      "cancellationDateOfFloodPolicy": "2023-07-06T00:00:00.000Z",
+      "policyCount": 1,
+      "condominiumCoverageTypeCode": "N",
+      "endorsementEffectiveDate": null
+    },
+    {
+      "id": 213421832,
+      "policyEffectiveDate": "2024-11-02T00:00:00.000Z",
+      "policyTerminationDate": "2025-11-02T00:00:00.000Z",
+      "cancellationDateOfFloodPolicy": "2023-11-02T00:00:00.000Z",
+      "policyCount": 1,
+      "condominiumCoverageTypeCode": "N",
+      "endorsementEffectiveDate": "2025-01-02T00:00:00.000Z"
+    },
+    {
+      "id": 213626206,
+      "policyEffectiveDate": "2024-12-21T00:00:00.000Z",
+      "policyTerminationDate": "2025-12-21T00:00:00.000Z",
+      "cancellationDateOfFloodPolicy": "2023-12-21T00:00:00.000Z",
+      "policyCount": 1,
+      "condominiumCoverageTypeCode": "N",
+      "endorsementEffectiveDate": "2024-12-21T00:00:00.000Z"
+    },
+    {
+      "id": 214080817,
+      "policyEffectiveDate": "2024-10-07T00:00:00.000Z",
+      "policyTerminationDate": "2025-10-07T00:00:00.000Z",
+      "cancellationDateOfFloodPolicy": "2023-10-07T00:00:00.000Z",
+      "policyCount": 1,
+      "condominiumCoverageTypeCode": "N",
+      "endorsementEffectiveDate": null
+    },
+    {
+      "id": 214922520,
+      "policyEffectiveDate": "2024-11-12T00:00:00.000Z",
+      "policyTerminationDate": "2025-11-12T00:00:00.000Z",
+      "cancellationDateOfFloodPolicy": "2023-11-12T00:00:00.000Z",
+      "policyCount": 1,
+      "condominiumCoverageTypeCode": "U",
+      "endorsementEffectiveDate": null
+    },
+    {
+      "id": 215754210,
+      "policyEffectiveDate": "2024-10-07T00:00:00.000Z",
+      "policyTerminationDate": "2025-10-07T00:00:00.000Z",
+      "cancellationDateOfFloodPolicy": "2023-10-07T00:00:00.000Z",
+      "policyCount": 1,
+      "condominiumCoverageTypeCode": "N",
+      "endorsementEffectiveDate": "2024-10-07T00:00:00.000Z"
+    },
+    {
+      "id": 215814884,
+      "policyEffectiveDate": "2024-05-21T00:00:00.000Z",
+      "policyTerminationDate": "2025-05-21T00:00:00.000Z",
+      "cancellationDateOfFloodPolicy": "2024-04-11T00:00:00.000Z",
+      "policyCount": 1,
+      "condominiumCoverageTypeCode": "N",
+      "endorsementEffectiveDate": null
+    },
+    {
+      "id": 215913644,
+      "policyEffectiveDate": "2024-07-09T00:00:00.000Z",
+      "policyTerminationDate": "2025-07-09T00:00:00.000Z",
+      "cancellationDateOfFloodPolicy": "2023-07-09T00:00:00.000Z",
+      "policyCount": 1,
+      "condominiumCoverageTypeCode": "N",
+      "endorsementEffectiveDate": "2024-10-25T00:00:00.000Z"
+    },
+    {
+      "id": 216440164,
+      "policyEffectiveDate": "2024-07-04T00:00:00.000Z",
+      "policyTerminationDate": "2025-07-04T00:00:00.000Z",
+      "cancellationDateOfFloodPolicy": "2021-07-04T00:00:00.000Z",
+      "policyCount": 1,
+      "condominiumCoverageTypeCode": "N",
+      "endorsementEffectiveDate": "2024-08-21T00:00:00.000Z"
+    },
+    {
+      "id": 216572309,
+      "policyEffectiveDate": "2024-05-30T00:00:00.000Z",
+      "policyTerminationDate": "2025-05-30T00:00:00.000Z",
+      "cancellationDateOfFloodPolicy": "2023-05-30T00:00:00.000Z",
+      "policyCount": 1,
+      "condominiumCoverageTypeCode": "U",
+      "endorsementEffectiveDate": "2024-05-30T00:00:00.000Z"
+    },
+    {
+      "id": 216610324,
+      "policyEffectiveDate": "2024-12-20T00:00:00.000Z",
+      "policyTerminationDate": "2025-12-20T00:00:00.000Z",
+      "cancellationDateOfFloodPolicy": "2024-11-26T00:00:00.000Z",
+      "policyCount": 1,
+      "condominiumCoverageTypeCode": "U",
+      "endorsementEffectiveDate": null
+    }
+  ],
+  "limitations": [
+    "GEOID-screened ZIP cohort only; missing or misassigned GEOIDs are not assessed.",
+    "Unique record IDs do not establish unique contracts, buildings, or insured units.",
+    "Individual-unit and master coverage can overlap; do not add groups as unique exposure.",
+    "Ignoring flagged cancellations is a sensitivity scenario, not a correction or a proven upper bound.",
+    "Excluded exceptions do not imply known zero coverage.",
+    "Transaction behavior and claims counting compatibility remain unresolved.",
+    "Earlier-cohort overlap is not independently verified by this offline script.",
+    "No claims rates or dashboard changes are produced."
+  ],
+  "input_evidence": [
+    {
+      "folder": "nfip_policy_33706_2023\\2023",
+      "effective_year": 2023,
+      "records": 4920,
+      "page_hashes": [
+        {
+          "page": "page_000000.json",
+          "sha256": "6e1171939a779f45bc7e76cea9cdc614e05452eba2886392e8390de6034d4246"
+        },
+        {
+          "page": "page_000001.json",
+          "sha256": "95f1025f9db7ac9eabaf2cc784739c1d0f7756bd29ff5b7ae9df2832c4668d86"
+        },
+        {
+          "page": "page_000002.json",
+          "sha256": "47ce0186522c392fd6647c6b4f9fab7a7f30c763c534a54c3263373f773de45e"
+        },
+        {
+          "page": "page_000003.json",
+          "sha256": "778b02496e799233045758976a58a4286e1ef854c07b6ec011e2395d266053d3"
+        },
+        {
+          "page": "page_000004.json",
+          "sha256": "3ef6deef93d9135c61194d8ba54cfeb9265e267b379e6eb9420ecd967809adad"
+        },
+        {
+          "page": "page_000005.json",
+          "sha256": "901105a212c0a2164a0c3181f1d6ba634869f54c7b512a0134797bdad28d607f"
+        }
+      ]
+    },
+    {
+      "folder": "nfip_policy_33706_2024\\2024",
+      "effective_year": 2024,
+      "records": 4915,
+      "page_hashes": [
+        {
+          "page": "page_000000.json",
+          "sha256": "e877b68bf9feea8a75886994c4114d7a8e86ae013cb51f6027746de85a533064"
+        },
+        {
+          "page": "page_000001.json",
+          "sha256": "e0373b6a7030deacf113df736f2a57f925178da9933994d20ebf83f8f087e8c6"
+        },
+        {
+          "page": "page_000002.json",
+          "sha256": "f06f5b86b854b18ab1ad3ca8e21d2b20938545d6d2d3d6b682724ae4de2ebb2f"
+        },
+        {
+          "page": "page_000003.json",
+          "sha256": "f192fd2607886d6fa92b2f42335ca0b8ed1251b313be352e39905a0685500fc0"
+        },
+        {
+          "page": "page_000004.json",
+          "sha256": "20716abc807336d7f8301df25c60c094a50ba14d80a84131b3fa76efe931244a"
+        },
+        {
+          "page": "page_000005.json",
+          "sha256": "d31251a08ca6d105b6f984fafca74b3edd060ee41e92464aeabcaddec01c2802"
+        }
+      ]
+    }
+  ],
+  "generated_at_utc": "2026-10-23T16:00:15.282514+00:00"
+}

@@ -218,9 +218,36 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
-# RiskMap datasets
-data/raw/
-data/processed/
 
-# Local VS Code settings
-.vscode/
+
+# RiskMap v2 local environments, secrets, caches, and reproducibility exclusions
+.venv/
+.venv-*/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+secrets.toml
+*.tmp
+*.temp
+*.part
+*.download
+*.log
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
+.vscode/settings.json
+data/raw/nfip_policy_smoke_test/
+data/raw/tl_2025_us_zcta520.zip
+data/raw/tl_2025_us_county.zip
+# Retained claims, policy, and hazard evidence under data/raw and data/processed remain trackable.

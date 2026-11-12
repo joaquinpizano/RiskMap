@@ -1,0 +1,14 @@
+{
+  "all_checks_passed": true,
+  "independent_duration_and_weighting_checks": true,
+  "all_earlier_effective_years_checked": true,
+  "earlier_candidates": 3849,
+  "earlier_effective_years": {
+    "2023": 3849
+  },
+  "prior_33706_results_reproduced_exactly": true,
+  "tests_passed": 22,
+  "partial": false,
+  "date_exceptions": 18,
+  "protected_files_unchanged": 427
+}

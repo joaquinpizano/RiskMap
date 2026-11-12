@@ -1,0 +1,275 @@
+{
+  "created_at_utc": "2026-11-11T20:57:35.402372+00:00",
+  "endpoint": "https://www.fema.gov/api/open/v3/NfipPolicies",
+  "scope": "FL, ZIP 33706, effective-year [Jan 1, next Jan 1); row counts, not insured units",
+  "cohorts": [
+    {
+      "local": {
+        "year": 2023,
+        "filter": "propertyState eq 'FL' and startswith(censusGeoid,'12103') and policyEffectiveDate ge '2023-01-01' and policyEffectiveDate lt '2024-01-01' and reportedZipCode eq '33706'",
+        "count": 4920,
+        "snapshots": {
+          "2026-09-08T00:00:00.000Z": 4920
+        },
+        "retrieved_at": "2026-10-23T15:45:08.500049+00:00",
+        "files_sha256": {
+          "data\\raw\\nfip_policy_33706_2023\\2023\\query.json": "edeb210524e8eba1eba7adb21438ae726883f1087fff45c6bfc8acbc81b70c18",
+          "data\\raw\\nfip_policy_33706_2023\\2023\\quality_report.json": "ef03b548078f293e139c670af34ff42a52263f64b334dabd74360c1430116059",
+          "data\\raw\\nfip_policy_33706_2023\\2023\\page_000000.json": "6e1171939a779f45bc7e76cea9cdc614e05452eba2886392e8390de6034d4246",
+          "data\\raw\\nfip_policy_33706_2023\\2023\\page_000001.json": "95f1025f9db7ac9eabaf2cc784739c1d0f7756bd29ff5b7ae9df2832c4668d86",
+          "data\\raw\\nfip_policy_33706_2023\\2023\\page_000002.json": "47ce0186522c392fd6647c6b4f9fab7a7f30c763c534a54c3263373f773de45e",
+          "data\\raw\\nfip_policy_33706_2023\\2023\\page_000003.json": "778b02496e799233045758976a58a4286e1ef854c07b6ec011e2395d266053d3",
+          "data\\raw\\nfip_policy_33706_2023\\2023\\page_000004.json": "3ef6deef93d9135c61194d8ba54cfeb9265e267b379e6eb9420ecd967809adad",
+          "data\\raw\\nfip_policy_33706_2023\\2023\\page_000005.json": "901105a212c0a2164a0c3181f1d6ba634869f54c7b512a0134797bdad28d607f"
+        }
+      },
+      "api_pinellas": {
+        "filter": "propertyState eq 'FL' and startswith(censusGeoid,'12103') and policyEffectiveDate ge '2023-01-01' and policyEffectiveDate lt '2024-01-01' and reportedZipCode eq '33706'",
+        "url": "https://www.fema.gov/api/open/v3/NfipPolicies?%24filter=propertyState+eq+%27FL%27+and+startswith%28censusGeoid%2C%2712103%27%29+and+policyEffectiveDate+ge+%272023-01-01%27+and+policyEffectiveDate+lt+%272024-01-01%27+and+reportedZipCode+eq+%2733706%27&%24select=id%2CasOfDate%2CpropertyState%2CreportedZipCode%2CcensusGeoid%2CpolicyEffectiveDate&%24orderby=id&%24top=10000&%24count=true",
+        "requested_at_utc": "2026-11-11T20:57:35.402511+00:00",
+        "attempt_errors": [],
+        "response_file": "openfema_2023_pinellas.json",
+        "response_sha256": "cf828667b691b2412b5b3285569c3168ea09990473e9f2bdcf0210410c01bfdf",
+        "status": "verified",
+        "count": 4920,
+        "snapshots": {
+          "2026-09-08T00:00:00.000Z": 4920
+        },
+        "metadata": {
+          "skip": 0,
+          "select": "id, asOfDate, propertyState, reportedZipCode, censusGeoid, policyEffectiveDate",
+          "rundate": "2026-11-11T20:56:26.275Z",
+          "top": 10000,
+          "filter": "propertyState eq 'FL' and startswith(censusGeoid,'12103') and policyEffectiveDate ge '2023-01-01' and policyEffectiveDate lt '2024-01-01' and reportedZipCode eq '33706'",
+          "format": "json",
+          "metadata": true,
+          "orderby": "id ASC",
+          "entityname": "NfipPolicies",
+          "version": "v3",
+          "url": "/api/open/v3/NfipPolicies?%24filter=propertyState+eq+%27FL%27+and+startswith%28censusGeoid%2C%2712103%27%29+and+policyEffectiveDate+ge+%272023-01-01%27+and+policyEffectiveDate+lt+%272024-01-01%27+and+reportedZipCode+eq+%2733706%27&%24select=id%2CasOfDate%2CpropertyState%2CreportedZipCode%2CcensusGeoid%2CpolicyEffectiveDate&%24orderby=id&%24top=10000&%24count=true",
+          "count": 4920
+        }
+      },
+      "api_zip_only": {
+        "filter": "propertyState eq 'FL' and policyEffectiveDate ge '2023-01-01' and policyEffectiveDate lt '2024-01-01' and reportedZipCode eq '33706'",
+        "url": "https://www.fema.gov/api/open/v3/NfipPolicies?%24filter=propertyState+eq+%27FL%27+and+policyEffectiveDate+ge+%272023-01-01%27+and+policyEffectiveDate+lt+%272024-01-01%27+and+reportedZipCode+eq+%2733706%27&%24select=id%2CasOfDate%2CpropertyState%2CreportedZipCode%2CcensusGeoid%2CpolicyEffectiveDate&%24orderby=id&%24top=10000&%24count=true",
+        "requested_at_utc": "2026-11-11T20:57:35.802619+00:00",
+        "attempt_errors": [],
+        "response_file": "openfema_2023_zip_only.json",
+        "response_sha256": "02ee53b7557d730d4f605f1a72cfadb4cf3bcd8f4713987ee2c119473a6374d8",
+        "status": "verified",
+        "count": 4936,
+        "snapshots": {
+          "2026-09-08T00:00:00.000Z": 4936
+        },
+        "metadata": {
+          "skip": 0,
+          "select": "id, asOfDate, propertyState, reportedZipCode, censusGeoid, policyEffectiveDate",
+          "rundate": "2026-11-11T20:56:26.276Z",
+          "top": 10000,
+          "filter": "propertyState eq 'FL' and policyEffectiveDate ge '2023-01-01' and policyEffectiveDate lt '2024-01-01' and reportedZipCode eq '33706'",
+          "format": "json",
+          "metadata": true,
+          "orderby": "id ASC",
+          "entityname": "NfipPolicies",
+          "version": "v3",
+          "url": "/api/open/v3/NfipPolicies?%24filter=propertyState+eq+%27FL%27+and+policyEffectiveDate+ge+%272023-01-01%27+and+policyEffectiveDate+lt+%272024-01-01%27+and+reportedZipCode+eq+%2733706%27&%24select=id%2CasOfDate%2CpropertyState%2CreportedZipCode%2CcensusGeoid%2CpolicyEffectiveDate&%24orderby=id&%24top=10000&%24count=true",
+          "count": 4936
+        }
+      },
+      "pinellas_comparison": {
+        "status": "same_as_of_date",
+        "count_delta": 0,
+        "local_ids_absent_remotely": 0,
+        "remote_ids_absent_locally": 0
+      },
+      "zip_snapshot_comparison": {
+        "status": "same_as_of_date",
+        "count_delta": 16,
+        "local_ids_absent_remotely": 0,
+        "remote_ids_absent_locally": 16
+      },
+      "geography_reconciliation": {
+        "pinellas_rows": 4920,
+        "null_geoid": 16,
+        "blank_geoid": 0,
+        "other_geoid": 0,
+        "pinellas_ids_match_separate_query": true
+      }
+    },
+    {
+      "local": {
+        "year": 2024,
+        "filter": "propertyState eq 'FL' and startswith(censusGeoid,'12103') and policyEffectiveDate ge '2024-01-01' and policyEffectiveDate lt '2025-01-01' and reportedZipCode eq '33706'",
+        "count": 4915,
+        "snapshots": {
+          "2026-09-08T00:00:00.000Z": 4915
+        },
+        "retrieved_at": "2026-10-23T15:03:45.576396+00:00",
+        "files_sha256": {
+          "data\\raw\\nfip_policy_33706_2024\\2024\\query.json": "f8e5521aa3baad8f3a738abb431ead1d973b9f92d72468976f50a3ba5ef49a28",
+          "data\\raw\\nfip_policy_33706_2024\\2024\\quality_report.json": "8d3d978e271266faa9314fc7cddc73a78d307e85b363285c54c5e85f793f66ba",
+          "data\\raw\\nfip_policy_33706_2024\\2024\\page_000000.json": "e877b68bf9feea8a75886994c4114d7a8e86ae013cb51f6027746de85a533064",
+          "data\\raw\\nfip_policy_33706_2024\\2024\\page_000001.json": "e0373b6a7030deacf113df736f2a57f925178da9933994d20ebf83f8f087e8c6",
+          "data\\raw\\nfip_policy_33706_2024\\2024\\page_000002.json": "f06f5b86b854b18ab1ad3ca8e21d2b20938545d6d2d3d6b682724ae4de2ebb2f",
+          "data\\raw\\nfip_policy_33706_2024\\2024\\page_000003.json": "f192fd2607886d6fa92b2f42335ca0b8ed1251b313be352e39905a0685500fc0",
+          "data\\raw\\nfip_policy_33706_2024\\2024\\page_000004.json": "20716abc807336d7f8301df25c60c094a50ba14d80a84131b3fa76efe931244a",
+          "data\\raw\\nfip_policy_33706_2024\\2024\\page_000005.json": "d31251a08ca6d105b6f984fafca74b3edd060ee41e92464aeabcaddec01c2802"
+        }
+      },
+      "api_pinellas": {
+        "filter": "propertyState eq 'FL' and startswith(censusGeoid,'12103') and policyEffectiveDate ge '2024-01-01' and policyEffectiveDate lt '2025-01-01' and reportedZipCode eq '33706'",
+        "url": "https://www.fema.gov/api/open/v3/NfipPolicies?%24filter=propertyState+eq+%27FL%27+and+startswith%28censusGeoid%2C%2712103%27%29+and+policyEffectiveDate+ge+%272024-01-01%27+and+policyEffectiveDate+lt+%272025-01-01%27+and+reportedZipCode+eq+%2733706%27&%24select=id%2CasOfDate%2CpropertyState%2CreportedZipCode%2CcensusGeoid%2CpolicyEffectiveDate&%24orderby=id&%24top=10000&%24count=true",
+        "requested_at_utc": "2026-11-11T20:57:36.273731+00:00",
+        "attempt_errors": [],
+        "response_file": "openfema_2024_pinellas.json",
+        "response_sha256": "eb4c8e2f0935cd6ac70079e9428a42e835338a82316a86d2a580b08c64db31f0",
+        "status": "verified",
+        "count": 4915,
+        "snapshots": {
+          "2026-09-08T00:00:00.000Z": 4915
+        },
+        "metadata": {
+          "skip": 0,
+          "select": "id, asOfDate, propertyState, reportedZipCode, censusGeoid, policyEffectiveDate",
+          "rundate": "2026-11-11T20:56:32.128Z",
+          "top": 10000,
+          "filter": "propertyState eq 'FL' and startswith(censusGeoid,'12103') and policyEffectiveDate ge '2024-01-01' and policyEffectiveDate lt '2025-01-01' and reportedZipCode eq '33706'",
+          "format": "json",
+          "metadata": true,
+          "orderby": "id ASC",
+          "entityname": "NfipPolicies",
+          "version": "v3",
+          "url": "/api/open/v3/NfipPolicies?%24filter=propertyState+eq+%27FL%27+and+startswith%28censusGeoid%2C%2712103%27%29+and+policyEffectiveDate+ge+%272024-01-01%27+and+policyEffectiveDate+lt+%272025-01-01%27+and+reportedZipCode+eq+%2733706%27&%24select=id%2CasOfDate%2CpropertyState%2CreportedZipCode%2CcensusGeoid%2CpolicyEffectiveDate&%24orderby=id&%24top=10000&%24count=true",
+          "count": 4915
+        }
+      },
+      "api_zip_only": {
+        "filter": "propertyState eq 'FL' and policyEffectiveDate ge '2024-01-01' and policyEffectiveDate lt '2025-01-01' and reportedZipCode eq '33706'",
+        "url": "https://www.fema.gov/api/open/v3/NfipPolicies?%24filter=propertyState+eq+%27FL%27+and+policyEffectiveDate+ge+%272024-01-01%27+and+policyEffectiveDate+lt+%272025-01-01%27+and+reportedZipCode+eq+%2733706%27&%24select=id%2CasOfDate%2CpropertyState%2CreportedZipCode%2CcensusGeoid%2CpolicyEffectiveDate&%24orderby=id&%24top=10000&%24count=true",
+        "requested_at_utc": "2026-11-11T20:57:36.612237+00:00",
+        "attempt_errors": [],
+        "response_file": "openfema_2024_zip_only.json",
+        "response_sha256": "b1b0817bb4f25841d04bf3620bd9a20c375684ff65356dbcef3f15ec25f6c66f",
+        "status": "verified",
+        "count": 5514,
+        "snapshots": {
+          "2026-09-08T00:00:00.000Z": 5514
+        },
+        "metadata": {
+          "skip": 0,
+          "select": "id, asOfDate, propertyState, reportedZipCode, censusGeoid, policyEffectiveDate",
+          "rundate": "2026-11-11T20:56:35.634Z",
+          "top": 10000,
+          "filter": "propertyState eq 'FL' and policyEffectiveDate ge '2024-01-01' and policyEffectiveDate lt '2025-01-01' and reportedZipCode eq '33706'",
+          "format": "json",
+          "metadata": true,
+          "orderby": "id ASC",
+          "entityname": "NfipPolicies",
+          "version": "v3",
+          "url": "/api/open/v3/NfipPolicies?%24filter=propertyState+eq+%27FL%27+and+policyEffectiveDate+ge+%272024-01-01%27+and+policyEffectiveDate+lt+%272025-01-01%27+and+reportedZipCode+eq+%2733706%27&%24select=id%2CasOfDate%2CpropertyState%2CreportedZipCode%2CcensusGeoid%2CpolicyEffectiveDate&%24orderby=id&%24top=10000&%24count=true",
+          "count": 5514
+        }
+      },
+      "pinellas_comparison": {
+        "status": "same_as_of_date",
+        "count_delta": 0,
+        "local_ids_absent_remotely": 0,
+        "remote_ids_absent_locally": 0
+      },
+      "zip_snapshot_comparison": {
+        "status": "same_as_of_date",
+        "count_delta": 599,
+        "local_ids_absent_remotely": 0,
+        "remote_ids_absent_locally": 599
+      },
+      "geography_reconciliation": {
+        "pinellas_rows": 4915,
+        "null_geoid": 599,
+        "blank_geoid": 0,
+        "other_geoid": 0,
+        "pinellas_ids_match_separate_query": true
+      }
+    }
+  ],
+  "prior_geography_report": {
+    "path": "reports/nfip_policy_geoid_coverage_33706_2023_2024.txt",
+    "status": "Existing narrative only; no ZIP-only raw responses saved with that report"
+  },
+  "recommendation": "Supports one additional ZIP as a bounded ingestion/geography test; not validated exposure or claim frequency.",
+  "preservation": {
+    "sha256_before": {
+      "dashboard.py": "4d1828d77d43cbd3456884f88f7e1a3f6cfa1bb4d8249385de4a61f47dc94038",
+      "dashboard_pilot.py": "211fe595b75e793c8800885ea08e9da74551fdb155fd67383213aa0193e121ef",
+      "reports\\claims_policy_compatibility_33706_2024.json": "3e6d3c18252cfc08f48888b09e47cdd8c8c4cbf50e2b60432825925fac82066d",
+      "reports\\nfip_geographic_payment_report.txt": "7a9fabb7914bb56233fdd1e566200748189871f7800adcab3355cfd7f542911f",
+      "reports\\nfip_geography_audit.txt": "f4ca2e9b7e2d19278a6c1909db8753a2c85d6fc59fa48c2e3aac64de284d1fca",
+      "reports\\nfip_hud_crosswalk_report.txt": "e4b42ac283876c1ffdb64b37dd3cc5bb379936d51773897c9f8cd75c66adca7d",
+      "reports\\nfip_pinellas_zcta_map.svg": "4035a8af9830dff8e7970e1627ff56bb63f6c37169744bf4a90c6ac61cc0381a",
+      "reports\\nfip_policy_geoid_coverage_33706_2023_2024.txt": "4a3b012867ed9c65952a1d978c23f02d52e9f72f99bee8867366a6cd4c8da104",
+      "reports\\nfip_quality_report.txt": "77bf07f45e8362b2ac3c2cd38dd1ae5a2fcd06a4f78a97ffb43039e023ea75ce",
+      "reports\\nfip_top_zip_payments.svg": "c7ef53c36229a8b3a2211d8a9d22384168eeb08ddd671d91550e8c9a6000d2ca",
+      "reports\\nfip_zcta_map_coverage.txt": "cb4d93770139c63f997b159f4ece3072114427b1b74d20458a26d13fec1f08b3",
+      "reports\\pilot_record_metrics_33706_2024.json": "046256f2c569c03131936ead3e3f49f66779e511a555f391b6f921684df8a68d",
+      "reports\\provisional_exposure_33706_2024.json": "33501dbf5e15597cf29cacfbc58234494bb5c184d8438642a7de4b3655592bc1",
+      "reports\\policy_cohort_audit_2026-11-11\\audit.md": "8cc0f8984c9a632c20f23cef25cd056dab1e86d17499ad4f0037c0f4aad014aa",
+      "reports\\policy_cohort_audit_2026-11-11\\evidence.json": "5ac741b03ff9d72a04787e879960098673d2be606bad373d66434e67aae92c68",
+      "reports\\policy_cohort_audit_2026-11-11\\openfema_2023_zip_only.json": "02ee53b7557d730d4f605f1a72cfadb4cf3bcd8f4713987ee2c119473a6374d8",
+      "reports\\policy_cohort_audit_2026-11-11\\openfema_2024_pinellas.json": "eb4c8e2f0935cd6ac70079e9428a42e835338a82316a86d2a580b08c64db31f0",
+      "reports\\policy_cohort_audit_2026-11-11\\openfema_2024_zip_only.json": "b1b0817bb4f25841d04bf3620bd9a20c375684ff65356dbcef3f15ec25f6c66f",
+      "data\\raw\\nfip_policy_33706_2023\\2023\\page_000000.json": "6e1171939a779f45bc7e76cea9cdc614e05452eba2886392e8390de6034d4246",
+      "data\\raw\\nfip_policy_33706_2023\\2023\\page_000001.json": "95f1025f9db7ac9eabaf2cc784739c1d0f7756bd29ff5b7ae9df2832c4668d86",
+      "data\\raw\\nfip_policy_33706_2023\\2023\\page_000002.json": "47ce0186522c392fd6647c6b4f9fab7a7f30c763c534a54c3263373f773de45e",
+      "data\\raw\\nfip_policy_33706_2023\\2023\\page_000003.json": "778b02496e799233045758976a58a4286e1ef854c07b6ec011e2395d266053d3",
+      "data\\raw\\nfip_policy_33706_2023\\2023\\page_000004.json": "3ef6deef93d9135c61194d8ba54cfeb9265e267b379e6eb9420ecd967809adad",
+      "data\\raw\\nfip_policy_33706_2023\\2023\\page_000005.json": "901105a212c0a2164a0c3181f1d6ba634869f54c7b512a0134797bdad28d607f",
+      "data\\raw\\nfip_policy_33706_2023\\2023\\quality_report.json": "ef03b548078f293e139c670af34ff42a52263f64b334dabd74360c1430116059",
+      "data\\raw\\nfip_policy_33706_2023\\2023\\query.json": "edeb210524e8eba1eba7adb21438ae726883f1087fff45c6bfc8acbc81b70c18",
+      "data\\raw\\nfip_policy_33706_2024\\2024\\page_000000.json": "e877b68bf9feea8a75886994c4114d7a8e86ae013cb51f6027746de85a533064",
+      "data\\raw\\nfip_policy_33706_2024\\2024\\page_000001.json": "e0373b6a7030deacf113df736f2a57f925178da9933994d20ebf83f8f087e8c6",
+      "data\\raw\\nfip_policy_33706_2024\\2024\\page_000002.json": "f06f5b86b854b18ab1ad3ca8e21d2b20938545d6d2d3d6b682724ae4de2ebb2f",
+      "data\\raw\\nfip_policy_33706_2024\\2024\\page_000003.json": "f192fd2607886d6fa92b2f42335ca0b8ed1251b313be352e39905a0685500fc0",
+      "data\\raw\\nfip_policy_33706_2024\\2024\\page_000004.json": "20716abc807336d7f8301df25c60c094a50ba14d80a84131b3fa76efe931244a",
+      "data\\raw\\nfip_policy_33706_2024\\2024\\page_000005.json": "d31251a08ca6d105b6f984fafca74b3edd060ee41e92464aeabcaddec01c2802",
+      "data\\raw\\nfip_policy_33706_2024\\2024\\quality_report.json": "8d3d978e271266faa9314fc7cddc73a78d307e85b363285c54c5e85f793f66ba",
+      "data\\raw\\nfip_policy_33706_2024\\2024\\query.json": "f8e5521aa3baad8f3a738abb431ead1d973b9f92d72468976f50a3ba5ef49a28"
+    },
+    "sha256_after": {
+      "dashboard.py": "4d1828d77d43cbd3456884f88f7e1a3f6cfa1bb4d8249385de4a61f47dc94038",
+      "dashboard_pilot.py": "211fe595b75e793c8800885ea08e9da74551fdb155fd67383213aa0193e121ef",
+      "reports\\claims_policy_compatibility_33706_2024.json": "3e6d3c18252cfc08f48888b09e47cdd8c8c4cbf50e2b60432825925fac82066d",
+      "reports\\nfip_geographic_payment_report.txt": "7a9fabb7914bb56233fdd1e566200748189871f7800adcab3355cfd7f542911f",
+      "reports\\nfip_geography_audit.txt": "f4ca2e9b7e2d19278a6c1909db8753a2c85d6fc59fa48c2e3aac64de284d1fca",
+      "reports\\nfip_hud_crosswalk_report.txt": "e4b42ac283876c1ffdb64b37dd3cc5bb379936d51773897c9f8cd75c66adca7d",
+      "reports\\nfip_pinellas_zcta_map.svg": "4035a8af9830dff8e7970e1627ff56bb63f6c37169744bf4a90c6ac61cc0381a",
+      "reports\\nfip_policy_geoid_coverage_33706_2023_2024.txt": "4a3b012867ed9c65952a1d978c23f02d52e9f72f99bee8867366a6cd4c8da104",
+      "reports\\nfip_quality_report.txt": "77bf07f45e8362b2ac3c2cd38dd1ae5a2fcd06a4f78a97ffb43039e023ea75ce",
+      "reports\\nfip_top_zip_payments.svg": "c7ef53c36229a8b3a2211d8a9d22384168eeb08ddd671d91550e8c9a6000d2ca",
+      "reports\\nfip_zcta_map_coverage.txt": "cb4d93770139c63f997b159f4ece3072114427b1b74d20458a26d13fec1f08b3",
+      "reports\\pilot_record_metrics_33706_2024.json": "046256f2c569c03131936ead3e3f49f66779e511a555f391b6f921684df8a68d",
+      "reports\\provisional_exposure_33706_2024.json": "33501dbf5e15597cf29cacfbc58234494bb5c184d8438642a7de4b3655592bc1",
+      "reports\\policy_cohort_audit_2026-11-11\\audit.md": "8cc0f8984c9a632c20f23cef25cd056dab1e86d17499ad4f0037c0f4aad014aa",
+      "reports\\policy_cohort_audit_2026-11-11\\evidence.json": "5ac741b03ff9d72a04787e879960098673d2be606bad373d66434e67aae92c68",
+      "reports\\policy_cohort_audit_2026-11-11\\openfema_2023_zip_only.json": "02ee53b7557d730d4f605f1a72cfadb4cf3bcd8f4713987ee2c119473a6374d8",
+      "reports\\policy_cohort_audit_2026-11-11\\openfema_2024_pinellas.json": "eb4c8e2f0935cd6ac70079e9428a42e835338a82316a86d2a580b08c64db31f0",
+      "reports\\policy_cohort_audit_2026-11-11\\openfema_2024_zip_only.json": "b1b0817bb4f25841d04bf3620bd9a20c375684ff65356dbcef3f15ec25f6c66f",
+      "data\\raw\\nfip_policy_33706_2023\\2023\\page_000000.json": "6e1171939a779f45bc7e76cea9cdc614e05452eba2886392e8390de6034d4246",
+      "data\\raw\\nfip_policy_33706_2023\\2023\\page_000001.json": "95f1025f9db7ac9eabaf2cc784739c1d0f7756bd29ff5b7ae9df2832c4668d86",
+      "data\\raw\\nfip_policy_33706_2023\\2023\\page_000002.json": "47ce0186522c392fd6647c6b4f9fab7a7f30c763c534a54c3263373f773de45e",
+      "data\\raw\\nfip_policy_33706_2023\\2023\\page_000003.json": "778b02496e799233045758976a58a4286e1ef854c07b6ec011e2395d266053d3",
+      "data\\raw\\nfip_policy_33706_2023\\2023\\page_000004.json": "3ef6deef93d9135c61194d8ba54cfeb9265e267b379e6eb9420ecd967809adad",
+      "data\\raw\\nfip_policy_33706_2023\\2023\\page_000005.json": "901105a212c0a2164a0c3181f1d6ba634869f54c7b512a0134797bdad28d607f",
+      "data\\raw\\nfip_policy_33706_2023\\2023\\quality_report.json": "ef03b548078f293e139c670af34ff42a52263f64b334dabd74360c1430116059",
+      "data\\raw\\nfip_policy_33706_2023\\2023\\query.json": "edeb210524e8eba1eba7adb21438ae726883f1087fff45c6bfc8acbc81b70c18",
+      "data\\raw\\nfip_policy_33706_2024\\2024\\page_000000.json": "e877b68bf9feea8a75886994c4114d7a8e86ae013cb51f6027746de85a533064",
+      "data\\raw\\nfip_policy_33706_2024\\2024\\page_000001.json": "e0373b6a7030deacf113df736f2a57f925178da9933994d20ebf83f8f087e8c6",
+      "data\\raw\\nfip_policy_33706_2024\\2024\\page_000002.json": "f06f5b86b854b18ab1ad3ca8e21d2b20938545d6d2d3d6b682724ae4de2ebb2f",
+      "data\\raw\\nfip_policy_33706_2024\\2024\\page_000003.json": "f192fd2607886d6fa92b2f42335ca0b8ed1251b313be352e39905a0685500fc0",
+      "data\\raw\\nfip_policy_33706_2024\\2024\\page_000004.json": "20716abc807336d7f8301df25c60c094a50ba14d80a84131b3fa76efe931244a",
+      "data\\raw\\nfip_policy_33706_2024\\2024\\page_000005.json": "d31251a08ca6d105b6f984fafca74b3edd060ee41e92464aeabcaddec01c2802",
+      "data\\raw\\nfip_policy_33706_2024\\2024\\quality_report.json": "8d3d978e271266faa9314fc7cddc73a78d307e85b363285c54c5e85f793f66ba",
+      "data\\raw\\nfip_policy_33706_2024\\2024\\query.json": "f8e5521aa3baad8f3a738abb431ead1d973b9f92d72468976f50a3ba5ef49a28"
+    },
+    "all_unchanged": true
+  }
+}

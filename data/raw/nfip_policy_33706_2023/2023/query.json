@@ -1,0 +1,6 @@
+{
+  "api": "https://www.fema.gov/api/open/v3/NfipPolicies",
+  "filter": "propertyState eq 'FL' and startswith(censusGeoid,'12103') and policyEffectiveDate ge '2023-01-01' and policyEffectiveDate lt '2024-01-01' and reportedZipCode eq '33706'",
+  "fields": "id,propertyState,reportedZipCode,censusGeoid,policyEffectiveDate,policyTerminationDate,cancellationDateOfFloodPolicy,policyCount,condominiumCoverageTypeCode,asOfDate,endorsementEffectiveDate,policyTermIndicator",
+  "page_size": 1000
+}

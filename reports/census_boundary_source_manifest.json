@@ -1,0 +1,30 @@
+{
+  "release": "2025 TIGER/Line",
+  "description": "Pinned source files required to rebuild the saved ZCTA map and NFHL ZCTA summaries.",
+  "archives": [
+    {
+      "filename": "tl_2025_us_zcta520.zip",
+      "url": "https://www2.census.gov/geo/tiger/TIGER2025/ZCTA520/tl_2025_us_zcta520.zip",
+      "size_bytes": 529118424,
+      "sha256": "e87129634eefe8719ef06ce4cfdf6588520be2e359360e590aaae90e4afb1911",
+      "required_members": [
+        "tl_2025_us_zcta520.shp",
+        "tl_2025_us_zcta520.shx",
+        "tl_2025_us_zcta520.dbf",
+        "tl_2025_us_zcta520.prj"
+      ]
+    },
+    {
+      "filename": "tl_2025_us_county.zip",
+      "url": "https://www2.census.gov/geo/tiger/TIGER2025/COUNTY/tl_2025_us_county.zip",
+      "size_bytes": 83989800,
+      "sha256": "9c6e9d9076abce2670d1de255de3710c35ecca00a7005d88e012dec52d95f763",
+      "required_members": [
+        "tl_2025_us_county.shp",
+        "tl_2025_us_county.shx",
+        "tl_2025_us_county.dbf",
+        "tl_2025_us_county.prj"
+      ]
+    }
+  ]
+}

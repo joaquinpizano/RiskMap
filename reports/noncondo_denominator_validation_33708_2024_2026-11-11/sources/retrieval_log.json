@@ -1,0 +1,25 @@
+[
+  {
+    "name": "faq",
+    "url": "https://agents.floodsmart.gov/flood-maps-and-data/faqs-about-nfip-data",
+    "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)>"
+  },
+  {
+    "name": "fema_single_family",
+    "url": "https://www.fema.gov/flood-insurance/work-with-nfip/risk-rating/single-family-home",
+    "error": "HTTPError: HTTP Error 403: Forbidden"
+  },
+  {
+    "name": "fema_reports",
+    "url": "https://nfipservices.floodsmart.gov/reports-flood-insurance-data",
+    "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)>"
+  },
+  {
+    "name": "pinellas_assessment",
+    "url": "https://cms5.revize.com/revize/stpete/LMS_Annual_Update%20_2024.pdf",
+    "final_url": "https://cms5.revize.com/revize/stpete/LMS_Annual_Update%20_2024.pdf",
+    "content_type": "application/pdf",
+    "path": "pinellas_assessment.pdf",
+    "bytes": 4084466
+  }
+]

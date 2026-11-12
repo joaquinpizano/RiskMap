@@ -1,0 +1,45 @@
+﻿RISKMAP - NFIP POLICY GEOGRAPHIC COVERAGE AUDIT
+ZIP: 33706
+Cohorts: 2023 and 2024
+Source: FEMA OpenFEMA NFIP Policies v3
+Source as-of date: 2026-09-08
+
+2023
+ZIP-only records: 4936
+Pinellas GEOID records: 4920
+Missing GEOID records: 16
+Excluded percentage: 0.32%
+Classification: PASS
+
+2024
+ZIP-only records: 5514
+Pinellas GEOID records: 4915
+Missing GEOID records: 599
+Excluded percentage: 10.86%
+Classification: PASS
+
+COMBINED
+ZIP-only records: 10450
+Pinellas GEOID records: 9835
+Missing GEOID records: 615
+
+FINDINGS
+All excluded records have null Census GEOIDs.
+No blank or non-Pinellas GEOIDs were identified
+among the excluded 2024 records.
+2023 exclusions were fully reconciled to null GEOIDs.
+2024 exclusions were fully reconciled to null GEOIDs.
+
+LIMITATIONS
+Missing GEOIDs do not establish county membership.
+Effective-year cohorts are not calendar-year exposure.
+Policy records are not necessarily unique insured properties.
+Geographic completeness and exposure remain unvalidated.
+Independent FEMA benchmark comparison is pending.
+Do not present provisional ratios as validated claim frequency.
+
+STATUS
+Geographic exclusion classification: COMPLETE
+County coverage validation: INCOMPLETE
+Independent FEMA benchmark: PENDING
+Power BI migration: PENDING

@@ -1,0 +1,30 @@
+{
+  "independent_saved_evidence_checks": [
+    {
+      "zip": "33706",
+      "year": 2023,
+      "ids_match": true,
+      "extra_records_all_null_geoid": 16
+    },
+    {
+      "zip": "33706",
+      "year": 2024,
+      "ids_match": true,
+      "extra_records_all_null_geoid": 599
+    },
+    {
+      "zip": "33703",
+      "year": 2023,
+      "ids_match": true,
+      "extra_records_all_null_geoid": 29
+    },
+    {
+      "zip": "33703",
+      "year": 2024,
+      "ids_match": true,
+      "extra_records_all_null_geoid": 348
+    }
+  ],
+  "protected_files_unchanged": 40,
+  "all_checks_passed": true
+}
