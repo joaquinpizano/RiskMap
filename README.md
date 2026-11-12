@@ -15,6 +15,11 @@ Launch **`dashboard_pilot.py`** for the current pilot. `dashboard.py` is the sep
 - **2024 Exposure Pilot:** the older, fixed ZIP 33706 exploratory record-based pilot, with provenance checks and coverage groups kept separate. Its existing ratios are not validated property/contract claim rates.
 - **Data & Methodology:** source descriptions and interpretation limits.
 
+The pilot caches immutable data reads and deterministic saved-report calculations
+using source-file metadata as cache keys. Editing a source artifact therefore
+refreshes the relevant cached result without caching sidebar selections or other
+user state.
+
 The current fixed claims comparison is:
 
 | ZIP | 2024 claim records | All gross payment components missing | Nominal reported gross payments |

@@ -41,6 +41,8 @@ class ComparisonInputTests(unittest.TestCase):
 class PilotUITests(unittest.TestCase):
     def app(self):
         from streamlit.testing.v1 import AppTest
+        from streamlit import cache_data
+        cache_data.clear()
         return AppTest.from_file(str(ROOT/'dashboard_pilot.py'),default_timeout=30)
 
     def comparison(self,app):

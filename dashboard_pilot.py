@@ -16,8 +16,8 @@ from scripts.pilot_comparisons import claims_comparison, noncondo_exposure
 # --------------------------------------------------
 
 st.set_page_config(
-    page_title="RiskMap | Insurance Analytics",
-    page_icon="🌊",
+    page_title="RiskMap | Insurance analytics",
+    page_icon=":material/waves:",
     layout="wide",
 )
 
@@ -32,6 +32,11 @@ MAP_PATH = REPORTS_DIR / "nfip_pinellas_zcta_map.svg"
 HAZARD_DATA_PATH = DATA_DIR / "nfhl_zcta_hazard_summary.csv"
 HAZARD_METADATA_PATH = REPORTS_DIR / "nfhl_zcta_hazard_metadata.json"
 
+PILOT_REPORT_FILES = (
+    "provisional_exposure_33706_2024.json",
+    "claims_policy_compatibility_33706_2024.json",
+    "pilot_record_metrics_33706_2024.json",
+)
 
 PILOT_CODES = {
     "N": "Non-condominium",
@@ -42,7 +47,50 @@ PILOT_CODES = {
 }
 
 
-def load_exposure_pilot(reports_dir):
+def file_signature(*paths):
+    """Return file metadata used to refresh cached immutable artifacts."""
+    return tuple(
+        (
+            str(path),
+            path.stat().st_mtime_ns,
+            path.stat().st_size,
+        )
+        if path.is_file()
+        else (str(path), None, None)
+        for path in paths
+    )
+
+
+def pilot_report_signature(reports_dir):
+    return file_signature(
+        *(reports_dir / filename for filename in PILOT_REPORT_FILES)
+    )
+
+
+def noncondo_exposure_signature(root):
+    addendum_path = (
+        root
+        / "reports"
+        / "noncondo_cancellation_gap_addendum_33708_2024_2026-11-11"
+        / "evidence.json"
+    )
+    source_path = (
+        root
+        / "reports"
+        / "noncondo_denominator_validation_33708_2024_2026-11-11"
+        / "calculation_evidence.json"
+    )
+    paths = [addendum_path, source_path]
+    try:
+        addendum = json.loads(addendum_path.read_text(encoding="utf-8"))
+        paths.extend(root / name for name in addendum.get("input_sha256", {}))
+    except (OSError, TypeError, ValueError, json.JSONDecodeError):
+        pass
+    return file_signature(*paths)
+
+
+@st.cache_data(show_spinner=False)
+def load_exposure_pilot(reports_dir, source_signature):
     """Read the three saved reports, verify provenance, and reconcile display data."""
     filenames = {
         "exposure": "provisional_exposure_33706_2024.json",
@@ -186,7 +234,10 @@ def render_exposure_pilot():
     st.caption("ZIP 33706 | Pinellas Census GEOIDs | Fixed 2024 study period")
     st.info("This pilot uses its own fixed ZIP, year, and Census geography. The sidebar filters apply to the historical claims views, not this tab.")
     try:
-        pilot, reports, quality = load_exposure_pilot(REPORTS_DIR)
+        pilot, reports, quality = load_exposure_pilot(
+            REPORTS_DIR,
+            pilot_report_signature(REPORTS_DIR),
+        )
     except (ValueError, KeyError, TypeError, OSError, AttributeError) as error:
         st.warning("The exposure pilot is unavailable. Your historical claims views remain available.")
         st.caption(str(error))
@@ -253,15 +304,15 @@ def render_exposure_pilot():
 # LOAD DATA
 # --------------------------------------------------
 
-@st.cache_data
-def load_data():
+@st.cache_data(show_spinner=False)
+def load_data(source_signature):
     df = pd.read_csv(DATA_PATH)
     df["year_of_loss"] = df["year_of_loss"].astype(int)
     return df
 
 
-@st.cache_data
-def load_zip_data():
+@st.cache_data(show_spinner=False)
+def load_zip_data(source_signature):
     yearly = pd.read_csv(
         ZIP_DATA_PATH,
         dtype={"reported_zip_code": str},
@@ -275,11 +326,26 @@ def load_zip_data():
     return yearly, status
 
 
-@st.cache_data
-def load_hazard_data():
+@st.cache_data(show_spinner=False)
+def load_hazard_data(source_signature):
     hazard = pd.read_csv(HAZARD_DATA_PATH, dtype={"zcta5": str})
     metadata = json.loads(HAZARD_METADATA_PATH.read_text(encoding="utf-8"))
     return hazard, metadata
+
+
+@st.cache_data(show_spinner=False)
+def load_severity_data(path, source_signature):
+    return pd.read_csv(path, dtype={"reported_zip_code": str})
+
+
+@st.cache_data(show_spinner=False)
+def load_claims_comparison(path, source_signature):
+    return pd.DataFrame(claims_comparison(path))
+
+
+@st.cache_data(show_spinner=False)
+def load_noncondo_exposure(root, source_signature):
+    return noncondo_exposure(root)
 
 
 # --------------------------------------------------
@@ -297,18 +363,26 @@ st.caption(
     "Descriptive analysis, not predicted flood risk"
 )
 
+with st.container(border=True):
+    st.markdown("**Start here: 2024 ZIP comparison**")
+    st.caption(
+        "Review the fixed 2024 comparison for reported postal ZIPs 33703, "
+        "33706, and 33708. It is the clearest entry point for identifying "
+        "historical patterns to investigate further."
+    )
+
 if not DATA_PATH.exists():
     st.error(f"Dataset not found: {DATA_PATH}")
     st.stop()
 
-df = load_data()
+df = load_data(file_signature(DATA_PATH))
 
 
 # --------------------------------------------------
 # SIDEBAR FILTERS
 # --------------------------------------------------
 
-st.sidebar.header("Explore the Data")
+st.sidebar.header("Explore the data")
 
 STATUS_LABELS = {
     "hud_pinellas_link": "Pinellas-Linked ZIP Codes",
@@ -344,6 +418,7 @@ selected_years = st.sidebar.slider(
     min_value=min_year,
     max_value=max_year,
     value=(min_year, max_year),
+    help="This filter affects the overview and historical ZIP comparison only.",
 )
 
 filtered = df[
@@ -402,16 +477,19 @@ with tab_overview:
         col1.metric(
             "Reported Payments",
             f"${total_payments / 1e9:,.2f}B",
+            border=True,
         )
 
         col2.metric(
             "Claim Records",
             f"{total_claims:,}",
+            border=True,
         )
 
         col3.metric(
             "Positive-Payment Claims",
             f"{positive_claims:,}",
+            border=True,
         )
 
         # Aggregate by year
@@ -436,14 +514,17 @@ with tab_overview:
             "### Historical NFIP Payments by Year"
         )
 
+        annual_chart = annual.assign(
+            reported_payments_millions=annual["gross_reported_payments_usd"] / 1e6
+        )
         payment_chart = px.bar(
-            annual,
+            annual_chart,
             x="year_of_loss",
-            y="gross_reported_payments_usd",
+            y="reported_payments_millions",
             labels={
                 "year_of_loss": "Year of Loss",
-                "gross_reported_payments_usd":
-                    "Reported Payments (USD)",
+                "reported_payments_millions":
+                    "Reported Payments (USD millions)",
             },
             color_discrete_sequence=["#008C71"],
         )
@@ -451,7 +532,7 @@ with tab_overview:
         payment_chart.update_traces(
             hovertemplate=(
                 "Year: %{x}"
-                "<br>Payments: $%{y:,.2f}"
+                "<br>Payments: $%{y:,.2f}M"
                 "<extra></extra>"
             )
         )
@@ -459,12 +540,13 @@ with tab_overview:
         payment_chart.update_layout(
             xaxis=dict(type="category"),
             yaxis_tickprefix="$",
-            yaxis_tickformat="~s",
+            yaxis_tickformat=",.0f",
         )
 
         st.plotly_chart(
             payment_chart,
             width="stretch",
+            alt="Bar chart of nominal reported NFIP payments by year in millions of dollars.",
         )
 
         # Claim volume chart
@@ -500,6 +582,7 @@ with tab_overview:
         st.plotly_chart(
             claims_chart,
             width="stretch",
+            alt="Line chart of historical NFIP claim records by year.",
         )
 
         # Underlying annual data
@@ -538,16 +621,16 @@ with tab_geography:
         st.image(
             str(MAP_PATH),
             width="stretch",
+            caption="Static map of historical payments grouped by reported postal ZIP.",
         )
 
         st.caption(
-            "2025 Census ZCTA polygons clipped to "
-            "Pinellas County. The map shows historical "
-            "ZIP-level payments for the full available "
-            "period and does not respond to the year "
-            "slider. ZIPs and Census ZCTAs are not "
-            "identical geographic units. Values are "
-            "not flood-risk rates."
+            "Display geometry uses 2025 Census ZCTA polygons clipped to "
+            "Pinellas County, while payments remain grouped by reported "
+            "postal ZIP. No claims are spatially allocated to ZCTAs. The "
+            "map covers the full available period and does not respond to "
+            "the year slider; ZIPs and Census ZCTAs are not identical "
+            "geographic units, and values are not flood-risk rates."
         )
 
     else:
@@ -579,9 +662,9 @@ with tab_geography:
             "scripts/analyze_zip_loss_severity.py first."
         )
     else:
-        severity_data = pd.read_csv(
+        severity_data = load_severity_data(
             severity_path,
-            dtype={"reported_zip_code": str},
+            file_signature(severity_path),
         )
 
         required_columns = {
@@ -707,7 +790,11 @@ with tab_geography:
                         xaxis_tickformat="~s",
                     )
                     payments_fig.update_yaxes(type="category")
-                    st.plotly_chart(payments_fig, width="stretch")
+                    st.plotly_chart(
+                        payments_fig,
+                        width="stretch",
+                        alt="Horizontal bar chart ranking ZIPs by nominal reported payments.",
+                    )
 
                 with chart2:
                     st.markdown("#### Top ZIPs by Average Paid Claim")
@@ -748,7 +835,11 @@ with tab_geography:
                             xaxis_tickformat="~s",
                         )
                         severity_fig.update_yaxes(type="category")
-                        st.plotly_chart(severity_fig, width="stretch")
+                        st.plotly_chart(
+                            severity_fig,
+                            width="stretch",
+                            alt="Horizontal bar chart ranking ZIPs by average positive-payment claim.",
+                        )
 
                 st.markdown("#### Full ZIP Rankings")
                 severity_display = period_zip.rename(
@@ -802,14 +893,16 @@ with tab_geography:
     st.header("ZIP Code Comparison")
 
     st.caption(
-        "Compare historical NFIP payments and claims "
-        "for Pinellas-linked ZIP codes within the "
-        "selected years."
+        "Compare historical NFIP payments and claim records for "
+        "Pinellas-linked reported postal ZIPs within the selected years. "
+        "These totals are not exposure-adjusted rates."
     )
 
     if ZIP_DATA_PATH.exists() and ZIP_STATUS_PATH.exists():
 
-        yearly_zip, zip_status = load_zip_data()
+        yearly_zip, zip_status = load_zip_data(
+            file_signature(ZIP_DATA_PATH, ZIP_STATUS_PATH)
+        )
 
         # Identify Pinellas-linked ZIP codes
 
@@ -925,6 +1018,7 @@ with tab_geography:
                 st.plotly_chart(
                     payments_fig,
                     width="stretch",
+                    alt="Bar chart comparing historical nominal payments by reported postal ZIP.",
                 )
 
             # Claim comparison chart
@@ -952,6 +1046,7 @@ with tab_geography:
                 st.plotly_chart(
                     claims_fig,
                     width="stretch",
+                    alt="Bar chart comparing historical claim records by reported postal ZIP.",
                 )
 
             # Detailed comparison table
@@ -1019,9 +1114,17 @@ with tab_geography:
 
 with tab_comparison:
     st.header("2024 Historical Claims and Reported Payments")
-    st.info("Fixed comparison: ZIPs 33703, 33706 and 33708; year of loss 2024. Sidebar filters do not apply to this tab.")
+    st.info(
+        "Fixed comparison: reported postal ZIPs 33703, 33706, and 33708; "
+        "year of loss 2024. Sidebar filters do not apply to this tab. "
+        "Use it to identify historical patterns for follow-up, not to "
+        "estimate property risk or future losses."
+    )
     try:
-        comparison_2024 = pd.DataFrame(claims_comparison(ZIP_DATA_PATH))
+        comparison_2024 = load_claims_comparison(
+            ZIP_DATA_PATH,
+            file_signature(ZIP_DATA_PATH),
+        )
     except (OSError, ValueError, KeyError) as error:
         st.warning("The 2024 claims comparison is unavailable.")
         st.caption(str(error))
@@ -1036,22 +1139,39 @@ with tab_comparison:
                 custom_data=["All gross payment components missing"])
             claim_fig.update_xaxes(type="category")
             claim_fig.update_traces(hovertemplate="ZIP %{x}<br>Claim records: %{y:,}<br>All gross payment components missing: %{customdata[0]:,}<extra></extra>")
-            st.plotly_chart(claim_fig, width="stretch")
+            st.plotly_chart(
+                claim_fig,
+                width="stretch",
+                alt="Bar chart comparing 2024 claim records for the three reported postal ZIPs.",
+            )
         with payment_col:
             payment_fig = px.bar(comparison_2024, x="ZIP", y="Nominal reported payments ($)",
                 title="2024 Nominal Reported Payments", color_discrete_sequence=["#008C71"])
             payment_fig.update_xaxes(type="category")
             payment_fig.update_yaxes(tickprefix="$", tickformat="~s")
             payment_fig.update_traces(hovertemplate="ZIP %{x}<br>Nominal reported payments: $%{y:,.2f}<extra></extra>")
-            st.plotly_chart(payment_fig, width="stretch")
+            st.plotly_chart(
+                payment_fig,
+                width="stretch",
+                alt="Bar chart comparing 2024 nominal reported payments for the three reported postal ZIPs.",
+            )
         st.caption("Payments sum the reported gross building, contents and ICC components for 2024 losses, in nominal dollars. Missing components are unknown, not reported zeros. These are not final losses or cash disbursed only in 2024.")
         st.caption("Claims use reported ZIPs in the reconciled historical dataset. These ZIP-level counts are not exposure-adjusted flood-risk rates.")
+        st.info(
+            "Analyst takeaway: the comparison identifies ZIPs with different "
+            "historical claim volumes and reported payment totals. A ZIP can "
+            "be prioritized for data review, but this view does not establish "
+            "a causal driver, a property-level hazard, or a prospective loss rate."
+        )
 
     st.divider()
     st.header("33708 Non-condominium Exposure Sensitivity")
     st.warning("Provisional recorded-policy-duration exposure. This separate panel is not a denominator for the claims comparison above; no claim rates are calculated here.")
     try:
-        exposure_33708 = noncondo_exposure(BASE_DIR)
+        exposure_33708 = load_noncondo_exposure(
+            BASE_DIR,
+            noncondo_exposure_signature(BASE_DIR),
+        )
     except (OSError, ValueError, KeyError) as error:
         st.warning("The 33708 exposure sensitivity is unavailable.")
         st.caption(str(error))
@@ -1079,7 +1199,9 @@ with tab_hazard:
         st.info("Flood-hazard summaries are not available. Run scripts/summarize_nfhl_hazard.py to retrieve and summarize the official source data.")
     else:
         try:
-            hazard, hazard_metadata = load_hazard_data()
+            hazard, hazard_metadata = load_hazard_data(
+                file_signature(HAZARD_DATA_PATH, HAZARD_METADATA_PATH)
+            )
             required_hazard_fields = {
                 "zcta5", "zcta_area_km2", "nfhl_mapped_pct_zcta", "sfha_area_km2",
                 "sfha_pct_zcta", "sfha_pct_nfhl_mapped", "nfhl_study_effective_dates",
@@ -1097,7 +1219,13 @@ with tab_hazard:
             st.caption(str(error))
         else:
             st.markdown("### Share of ZCTA area mapped as a Special Flood Hazard Area")
-            st.caption("SFHA area uses NFHL SFHA_TF = T. The percentage is relative to the full 2020 Census ZCTA polygon, not only the NFHL-mapped footprint.")
+            st.caption(
+                "SFHA area uses NFHL SFHA_TF = T. The percentage is relative "
+                "to the full 2020 Census ZCTA polygon, not only the NFHL-mapped "
+                "footprint. The NFHL coverage percentage shows how much of "
+                "each full ZCTA is represented by retrieved FEMA hazard zones; "
+                "the remainder is not evidence of no hazard."
+            )
             hazard_chart = px.bar(
                 hazard.sort_values("zcta5"),
                 x="zcta5",
@@ -1116,10 +1244,15 @@ with tab_hazard:
             )
             hazard_chart.update_xaxes(type="category")
             hazard_chart.update_yaxes(range=[0, 100], ticksuffix="%")
-            st.plotly_chart(hazard_chart, width="stretch")
+            st.plotly_chart(
+                hazard_chart,
+                width="stretch",
+                alt="Bar chart showing the share of each Census ZCTA mapped as a Special Flood Hazard Area.",
+            )
 
             hazard_display = hazard[[
-                "zcta5", "nfhl_mapped_pct_zcta", "sfha_area_km2", "sfha_pct_zcta",
+                "zcta5", "nfhl_mapped_pct_zcta", "sfha_area_km2",
+                "sfha_pct_zcta",
             ]].rename(columns={
                 "zcta5": "Census ZCTA",
                 "nfhl_mapped_pct_zcta": "NFHL area represented (%)",
@@ -1127,7 +1260,8 @@ with tab_hazard:
                 "sfha_pct_zcta": "SFHA share of full ZCTA (%)",
             })
             st.dataframe(hazard_display, hide_index=True, width="stretch", column_config={
-                "NFHL area represented (%)": st.column_config.NumberColumn(format="%.2f%%"),
+                "NFHL area represented (%)":
+                    st.column_config.NumberColumn(format="%.2f%%"),
                 "Mapped SFHA area (km2)": st.column_config.NumberColumn(format="%.2f"),
                 "SFHA share of full ZCTA (%)": st.column_config.NumberColumn(format="%.2f%%"),
             })
