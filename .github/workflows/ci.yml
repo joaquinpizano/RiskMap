@@ -1,0 +1,39 @@
+name: RiskMap validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+
+      - name: Install development dependencies
+        run: python -m pip install -r requirements-dev.txt
+
+      - name: Restore pinned Census archives
+        run: python scripts/download_census_boundaries.py
+
+      - name: Run test suite
+        run: python -m unittest discover -s scripts -p 'test_*.py'
+
+      - name: Verify saved exposure
+        run: python scripts/verify_saved_exposure.py
+
+      - name: Validate saved ZIP analysis
+        run: python scripts/validate_zip_analysis.py

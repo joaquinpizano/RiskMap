@@ -168,6 +168,7 @@ From the project root, with the archived inputs present:
 .\.venv-pilot\Scripts\python.exe -m unittest discover -s scripts -p 'test_*.py'
 
 # Read-only checks of saved annual/ZIP totals and period/payment-share consistency.
+# Exits non-zero if any analytical check fails.
 .\.venv-pilot\Scripts\python.exe scripts/validate_zip_analysis.py
 ```
 
@@ -191,7 +192,9 @@ For the exposure verifier, retain:
 - the complete `reports/policy_audit_33708_2024_2026-11-11/` bundle, including downloaded pages and both API responses;
 - the complete `reports/exposure_sensitivity_33708_2024_2026-11-11/` bundle, including saved responses and evidence.
 
-The ZIP validator additionally reads `data/processed/nfip_loss_concentration_by_year.csv`. It prints `ALL VALIDATION CHECKS PASSED` on success, but **does not currently return a failing exit code for failed analytical checks**. Inspect its output; do not use its process status alone as a CI gate.
+The ZIP validator additionally reads `data/processed/nfip_loss_concentration_by_year.csv` and exits non-zero if any analytical check fails. The `scripts/test_validate_zip_analysis.py` regression tests cover both successful and intentionally corrupted saved inputs.
+
+GitHub Actions runs the development dependency install, restores the ignored Census archives with `scripts/download_census_boundaries.py`, runs the full test suite, verifies saved exposure, and validates the saved ZIP analysis on pushes and pull requests targeting `main`.
 
 Passing checks establishes saved-input consistency and computational reproducibility, not independent insurance coverage validation.
 
