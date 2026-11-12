@@ -1,0 +1,4 @@
+-r requirements.txt
+shapely==2.1.2
+pyshp==3.0.2.post1
+pyproj==3.7.2

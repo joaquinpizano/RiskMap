@@ -27,14 +27,15 @@ Payments sum known gross building, contents, and increased-cost-of-compliance (I
 
 ## Start from a fresh setup
 
-The verified platform is **Windows / PowerShell with CPython 3.13.17**. Obtain the project code **and the saved data/report bundle** described below. A code-only checkout is insufficient for the complete pilot or data-backed tests.
+The verified platform is **Windows / PowerShell with CPython 3.13.17**. Obtain the project code **and the saved data/report bundle** described below. A code-only checkout is insufficient for the complete pilot or data-backed tests. The supported Python line for this release is CPython 3.13; other Python versions are not certified.
 
 Install CPython 3.13 with the Windows Python launcher, open PowerShell in the project root, and run:
 
 ```powershell
 py -3.13 --version
 py -3.13 -m venv .venv-pilot
-.\.venv-pilot\Scripts\python.exe -m pip install streamlit==1.66.1 pandas==3.1.0 plotly==7.1.0 shapely pyshp pyproj
+.\.venv-pilot\Scripts\python.exe -m pip install --upgrade pip
+.\.venv-pilot\Scripts\python.exe -m pip install -r requirements.txt
 .\.venv-pilot\Scripts\python.exe -m streamlit run dashboard_pilot.py --server.address 127.0.0.1 --server.port 8501
 ```
 
@@ -42,7 +43,17 @@ Open **http://127.0.0.1:8501**. Stop the server with **Ctrl+C**. If that port is
 
 Activation is not required: explicitly using the environment's interpreter avoids PowerShell activation-policy issues. Do not recreate or overwrite an existing environment just to launch the app; use its interpreter directly. If `py` is unavailable, use the full path to your installed CPython executable for the first two commands. The `python` app-execution alias is not a reliable substitute on every Windows installation.
 
-The first three direct dependencies match the working pilot environment. `shapely`, `pyshp`, and `pyproj` are needed to rebuild the saved NFHL summary and the existing SVG map; they are not needed just to display the prebuilt dashboard results. There is currently no dependency manifest or complete transitive lockfile; the install command is not a guarantee of identical future dependency resolution.
+`requirements.txt` is intentionally limited to the three packages needed to display either dashboard in Streamlit hosting. The pinned versions match the verified pilot environment. Development, source-rebuild, and full-test dependencies are in `requirements-dev.txt`; it includes the hosted requirements plus `shapely`, `pyshp`, and `pyproj`.
+
+To prepare the complete development and verification environment instead, use:
+
+```powershell
+py -3.13 -m venv .venv-pilot
+.\.venv-pilot\Scripts\python.exe -m pip install --upgrade pip
+.\.venv-pilot\Scripts\python.exe -m pip install -r requirements-dev.txt
+```
+
+The requirements files pin direct dependencies but do not constitute a complete transitive lockfile. Rebuilds still depend on the saved data/report bundle and the pinned Census archives described below.
 
 Linux/macOS setup and the Windows-style paths embedded in saved JSON manifests have not been validated. Do not assume the archived evidence verifier is portable unchanged.
 
@@ -157,6 +168,17 @@ From the project root, with the archived inputs present:
 .\.venv-pilot\Scripts\python.exe -m unittest discover -s scripts -p 'test_*.py'
 
 # Read-only checks of saved annual/ZIP totals and period/payment-share consistency.
+.\.venv-pilot\Scripts\python.exe scripts/validate_zip_analysis.py
+```
+
+For a fresh checkout, the reproducibility sequence is:
+
+```powershell
+py -3.13 -m venv .venv-pilot
+.\.venv-pilot\Scripts\python.exe -m pip install --upgrade pip
+.\.venv-pilot\Scripts\python.exe -m pip install -r requirements-dev.txt
+.\.venv-pilot\Scripts\python.exe -m unittest discover -s scripts -p 'test_*.py'
+.\.venv-pilot\Scripts\python.exe scripts/verify_saved_exposure.py
 .\.venv-pilot\Scripts\python.exe scripts/validate_zip_analysis.py
 ```
 
